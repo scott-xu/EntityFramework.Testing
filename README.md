@@ -54,7 +54,7 @@ public async Task Index_returns_blogs_ordered_by_name()
 
     // Check the results
     var blogs = (List<Blog>)result.Model;
-    Assert.AreEqual(3, blogs .Count());
+    Assert.AreEqual(3, blogs.Count());
     Assert.AreEqual("AAA", blogs[0].Name);
     Assert.AreEqual("BBB", blogs[1].Name);
     Assert.AreEqual("CCC", blogs[2].Name);
