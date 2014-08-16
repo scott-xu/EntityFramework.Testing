@@ -2,18 +2,18 @@
 <package >
   <metadata>
     <id>EntityFrameworkTesting.Moq</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title>EntityFramework.Testing.Moq</title>
-    <authors>Rowan Miller, Scott Xu, Microsoft Open Technologies, Inc</authors>
-    <owners>Rowan Miller, Scott Xu, Microsoft Open Technologies, Inc</owners>
+    <authors>Microsoft Open Technologies, Inc; Rowan Miller; Scott Xu</authors>
+    <owners>scott xu</owners>
     <licenseUrl>https://github.com/scott-xu/EntityFramework.Testing/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/scott-xu/EntityFramework.Testing</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Testing helpers for using Moq with Entity Framework.</description>
     <copyright>Copyright 2014</copyright>
-    <tags>Entity Framework EF EF6 Testing</tags>
+    <tags>EntityFramework Entity Framework EF EF6 Testing Moq</tags>
     <dependencies>
-      <dependency id="EntityFrameworkTesting" version="1.0.0" />
+      <dependency id="EntityFrameworkTesting" version="1.0.1" />
     </dependencies>
   </metadata>
   <files>
