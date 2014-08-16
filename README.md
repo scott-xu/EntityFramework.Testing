@@ -10,7 +10,7 @@ The project is cut from EntityFrameworks' [source code](http://entityframework.c
 
 For example, given the following controller.
 
-```
+```C#
 public class BlogsController : Controller
 {
     private readonly BloggingContext db;
@@ -31,7 +31,7 @@ public class BlogsController : Controller
 
 You can write a unit test against an mock context as follows. `SetupData` extension method is part of EntityFramework.Testing.Moq.
 
-```
+```C#
 [TestMethod]
 public async Task Index_returns_blogs_ordered_by_name()
 {
@@ -68,20 +68,34 @@ public async Task Index_returns_blogs_ordered_by_name()
 
 `ToMockDbContext` extension method is part of EntityFramework.Testing.Moq.Ninject
 
-```
+```C#
 [TestMethod]
-public void Can_setup_dbset()
+public async Task Index_returns_blogs_ordered_by_name()
 {
     using (var kernel = new MoqMockingKernel())
     {
-        kernel.Bind<BlogDbContext>().ToMockDbContext();
+        // Create some test data
+        var data = new List<Blog>
+        {
+            new Blog{ Name = "BBB" },
+            new Blog{ Name = "CCC" },
+            new Blog{ Name = "AAA" }
+        };
 
-        var db = kernel.Get<BlogDbContext>();
+        // Setup mock set
+        kernel.GetMock<DbSet<Blog>>()
+            .SetupData(data);
 
-        var blogs = new List<Blog> { new Blog(), new Blog() };
-        kernel.GetMock<DbSet<Blog>>().SetupData(blogs);
+        // Get a BlogsController and invoke the Index action
+        var controller = kernel.Get<BlogsController>();
+        var result = await controller.Index();
 
-        Assert.AreEqual(2, db.Blogs.Count());
+        // Check the results
+        var blogs = (List<Blog>)result.Model;
+        Assert.AreEqual(3, blogs.Count());
+        Assert.AreEqual("AAA", blogs[0].Name);
+        Assert.AreEqual("BBB", blogs[1].Name);
+        Assert.AreEqual("CCC", blogs[2].Name);
     }
 }
 ``` 
