@@ -1,11 +1,11 @@
 [![Build Status](https://travis-ci.org/scott-xu/EntityFramework.Testing.svg?branch=master)](https://travis-ci.org/scott-xu/EntityFramework.Testing)
 
-## EntityFramework.Testing
-EntityFramework.Testing provides an implementation of `DbAsyncQueryProvider` that can be used when testing a component that uses async queries with EntityFramework. You can read more about how to use these components at http://msdn.com/data/dn314429#async.
+## EntityFramework.Testing [![NuGet Version](http://img.shields.io/nuget/v/EntityFrameworkTesting.svg?style=flat)](https://www.nuget.org/packages/EntityFrameworkTesting/) [![NuGet Downloads](http://img.shields.io/nuget/dt/EntityFrameworkTesting.svg?style=flat)](https://www.nuget.org/packages/EntityFrameworkTesting/)
+EntityFramework.Testing provides an implementation of `DbAsyncQueryProvider` that can be used when testing a component that uses async queries with EntityFramework.
 
 The project is cut from EntityFrameworks' [source code](http://entityframework.codeplex.com/SourceControl/latest#test/EntityFramework/FunctionalTests/TestDoubles/). Some changes are made to be compliance with StyleCop/CodeAnalysis
 
-## EntityFramework.Testing.Moq
+## EntityFramework.Testing.Moq [![NuGet Version](http://img.shields.io/nuget/v/EntityFrameworkTesting.Moq.svg?style=flat)](https://www.nuget.org/packages/EntityFrameworkTesting/) [![NuGet Downloads](http://img.shields.io/nuget/dt/EntityFrameworkTesting.Moq.svg?style=flat)](https://www.nuget.org/packages/EntityFrameworkTesting/)
 EntityFramework.Testing.Moq provides a helpful extension method to mock EntityFramework's DbSets using Moq. 
 
 For example, given the following controller.
