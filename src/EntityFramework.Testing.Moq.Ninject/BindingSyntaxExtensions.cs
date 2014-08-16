@@ -15,7 +15,7 @@ namespace Ninject.MockingKernel
     using global::Ninject.Syntax;
 
     /// <summary>
-    /// Extension methods for <see cref="IBindingToSyntax"/>.
+    /// Extension methods for <see cref="IBindingToSyntax{T}"/>.
     /// </summary>
     public static class BindingSyntaxExtensions
     {

@@ -16,18 +16,18 @@ namespace Moq
     using global::Moq;
 
     /// <summary>
-    /// Extension methods for <see cref="Mock{DbSet{TEntity}}"/>.
+    /// Extension methods for <see cref="Mock{T}"/>.
     /// </summary>
     public static class MockDbSetExtenstions
     {
         /// <summary>
-        /// Setup data to <see cref="Mock{DbSet{TEntity}}"/>.
+        /// Setup data to <see cref="Mock{T}"/>.
         /// </summary>
         /// <typeparam name="TEntity">The entity type.</typeparam>
-        /// <param name="mock">The <see cref="Mock{DbSet{TEntity}}"/>.</param>
+        /// <param name="mock">The <see cref="Mock{T}"/>.</param>
         /// <param name="data">The seed data.</param>
         /// <param name="find">The find action.</param>
-        /// <returns>The updated <see cref="Mock{DbSet{TEntity}}"/>.</returns>
+        /// <returns>The updated <see cref="Mock{T}"/>.</returns>
         public static Mock<DbSet<TEntity>> SetupData<TEntity>(this Mock<DbSet<TEntity>> mock, ICollection<TEntity> data = null, Func<object[], TEntity> find = null) where TEntity : class
         {
             data = data ?? new List<TEntity>();

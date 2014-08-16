@@ -109,7 +109,7 @@ namespace EntityFramework.Testing
         /// <summary>
         /// Get generic DB async enumerator
         /// </summary>
-        /// <returns>The <see cref="IDBAsyncEnumerator{T}"/>.</returns>
+        /// <returns>The <see cref="IDbAsyncEnumerator{T}"/>.</returns>
         public IDbAsyncEnumerator<T> GetAsyncEnumerator()
         {
             return new InMemoryDbAsyncEnumerator<T>(this.GetEnumerator());
@@ -118,7 +118,7 @@ namespace EntityFramework.Testing
         /// <summary>
         /// Get DB async enumerator
         /// </summary>
-        /// <returns>The <see cref="IDBAsyncEnumerator"/>.</returns>
+        /// <returns>The <see cref="IDbAsyncEnumerator"/>.</returns>
         IDbAsyncEnumerator IDbAsyncEnumerable.GetAsyncEnumerator()
         {
             return this.GetAsyncEnumerator();
