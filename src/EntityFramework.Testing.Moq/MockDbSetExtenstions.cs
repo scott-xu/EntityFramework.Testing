@@ -5,17 +5,18 @@
 // </copyright>
 //-----------------------------------------------------------------------------------------------------
 
-namespace EntityFramework.Testing.Moq
+namespace Moq
 {
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
+    using EntityFramework.Testing;
     using global::Moq;
 
     /// <summary>
-    /// Extension methods to <see cref="Mock{DbSet{TEntity}}"/>.
+    /// Extension methods for <see cref="Mock{DbSet{TEntity}}"/>.
     /// </summary>
     public static class MockDbSetExtenstions
     {

@@ -9,7 +9,7 @@
     <licenseUrl>https://github.com/scott-xu/EntityFramework.Testing/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/scott-xu/EntityFramework.Testing</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Testing helpers for using Moq with Entity Framework.</description>
+    <description>Testing helpers for using Moq with EntityFramework.</description>
     <copyright>Copyright 2014</copyright>
     <tags>EntityFramework Entity Framework EF EF6 Testing Moq</tags>
     <dependencies>

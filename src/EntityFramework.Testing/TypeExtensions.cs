@@ -12,7 +12,7 @@ namespace EntityFramework.Testing
     using System.Reflection;
 
     /// <summary>
-    /// Extension methods to <see cref="Type"/>.
+    /// Extension methods for <see cref="Type"/>.
     /// </summary>
     internal static class TypeExtensions
     {

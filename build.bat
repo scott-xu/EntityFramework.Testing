@@ -10,10 +10,12 @@ IF NOT EXIST %MSBUILDDIR%msbuild.exe goto MissingMSBuildExe
 
 ::BUILD
 "tools\nuget.exe" restore EntityFramework.Testing.sln 
-"%MSBUILDDIR%msbuild.exe" "src\EntityFramework.Testing\EntityFramework.Testing.csproj" /t:ReBuild /p:Configuration=Release;TargetFrameworkVersion=v4.0;DefineConstants="TRACE;NET40";FrameworkFolder=net40;OutPutPath=bin\Release\net40\
-"%MSBUILDDIR%msbuild.exe" "src\EntityFramework.Testing\EntityFramework.Testing.csproj" /t:ReBuild /p:Configuration=Release;TargetFrameworkVersion=v4.5;DefineConstants="TRACE;NET45";FrameworkFolder=net45;OutPutPath=bin\Release\net45\
-"%MSBUILDDIR%msbuild.exe" "src\EntityFramework.Testing.Moq\EntityFramework.Testing.Moq.csproj" /t:ReBuild /p:Configuration=Release;TargetFrameworkVersion=v4.0;DefineConstants="TRACE;NET40";FrameworkFolder=net40;OutPutPath=bin\Release\net40\
-"%MSBUILDDIR%msbuild.exe" "src\EntityFramework.Testing.Moq\EntityFramework.Testing.Moq.csproj" /t:ReBuild /p:Configuration=Release;TargetFrameworkVersion=v4.5;DefineConstants="TRACE;NET45";FrameworkFolder=net45;OutPutPath=bin\Release\net45\
+"%MSBUILDDIR%msbuild.exe" "src\EntityFramework.Testing\EntityFramework.Testing.csproj" /t:ReBuild /p:Configuration=Release;TargetFrameworkVersion=v4.0;DefineConstants="TRACE;NET40";OutPutPath=bin\Release\net40\
+"%MSBUILDDIR%msbuild.exe" "src\EntityFramework.Testing\EntityFramework.Testing.csproj" /t:ReBuild /p:Configuration=Release;TargetFrameworkVersion=v4.5;DefineConstants="TRACE;NET45";OutPutPath=bin\Release\net45\
+"%MSBUILDDIR%msbuild.exe" "src\EntityFramework.Testing.Moq\EntityFramework.Testing.Moq.csproj" /t:ReBuild /p:Configuration=Release;TargetFrameworkVersion=v4.0;DefineConstants="TRACE;NET40";OutPutPath=bin\Release\net40\
+"%MSBUILDDIR%msbuild.exe" "src\EntityFramework.Testing.Moq\EntityFramework.Testing.Moq.csproj" /t:ReBuild /p:Configuration=Release;TargetFrameworkVersion=v4.5;DefineConstants="TRACE;NET45";OutPutPath=bin\Release\net45\
+"%MSBUILDDIR%msbuild.exe" "src\EntityFramework.Testing.Moq.Ninject\EntityFramework.Testing.Moq.Ninject.csproj" /t:ReBuild /p:Configuration=Release;TargetFrameworkVersion=v4.0;DefineConstants="TRACE;NET40";OutPutPath=bin\Release\net40\
+"%MSBUILDDIR%msbuild.exe" "src\EntityFramework.Testing.Moq.Ninject\EntityFramework.Testing.Moq.Ninject.csproj" /t:ReBuild /p:Configuration=Release;TargetFrameworkVersion=v4.5;DefineConstants="TRACE;NET45";OutPutPath=bin\Release\net45\
 
 mkdir build
 del "build\*.nupkg"
@@ -21,9 +23,10 @@ del "build\*.nupkg"
 ::PACK
 "tools\nuget.exe" pack "src\EntityFramework.Testing\EntityFramework.Testing.nuspec" -OutputDirectory build
 "tools\nuget.exe" pack "src\EntityFramework.Testing.Moq\EntityFramework.Testing.Moq.nuspec" -OutputDirectory build
+"tools\nuget.exe" pack "src\EntityFramework.Testing.Moq.Ninject\EntityFramework.Testing.Moq.Ninject.nuspec" -OutputDirectory build
 
 ::DEPLOY
-"tools\nuget.exe" push "build\*.nupkg"
+::"tools\nuget.exe" push "build\*.nupkg"
 
 goto:eof
 ::ERRORS
