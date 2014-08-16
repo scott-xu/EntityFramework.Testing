@@ -81,6 +81,9 @@ public async Task Index_returns_blogs_ordered_by_name()
             new Blog{ Name = "CCC" },
             new Blog{ Name = "AAA" }
         };
+        
+        // Bind BloggingContext to mock
+        kernel.Bind<BloggingContext>().ToMockDbContext();
 
         // Setup mock set
         kernel.GetMock<DbSet<Blog>>()
