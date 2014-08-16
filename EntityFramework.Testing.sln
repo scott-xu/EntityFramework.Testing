@@ -7,15 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Testing", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Testing.Moq", "src\EntityFramework.Testing.Moq\EntityFramework.Testing.Moq.csproj", "{13B2C70C-A084-44AF-8F75-975D84438DEE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{56EF6CEF-D305-42B5-B0FC-1528B670548E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Testing.Moq.Tests", "src\EntityFramework.Testing.Moq.Tests\EntityFramework.Testing.Moq.Tests.csproj", "{1F55F581-F0D8-423D-A514-636C161ACDB4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7532A630-3026-4E1A-9E5C-13611C22C5F6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Testing.Moq.Tests", "test\EntityFramework.Testing.Moq.Tests\EntityFramework.Testing.Moq.Tests.csproj", "{1F55F581-F0D8-423D-A514-636C161ACDB4}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A5D7A40E-6C6E-4119-A6FA-861C176A3F2A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0B958171-3200-4A3D-BE6B-DC53507A82CF}"
 	ProjectSection(SolutionItems) = preProject
-		.nuget\packages.config = .nuget\packages.config
+		build.bat = build.bat
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
@@ -39,10 +36,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{4351E4D4-C68C-4CF6-998B-AB56D8A3760D} = {56EF6CEF-D305-42B5-B0FC-1528B670548E}
-		{13B2C70C-A084-44AF-8F75-975D84438DEE} = {56EF6CEF-D305-42B5-B0FC-1528B670548E}
-		{1F55F581-F0D8-423D-A514-636C161ACDB4} = {7532A630-3026-4E1A-9E5C-13611C22C5F6}
 	EndGlobalSection
 EndGlobal
