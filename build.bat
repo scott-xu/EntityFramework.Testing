@@ -21,9 +21,9 @@ mkdir build
 del "build\*.nupkg"
 
 ::PACK
-"tools\nuget.exe" pack "src\EntityFramework.Testing\EntityFramework.Testing.nuspec" -OutputDirectory build
-"tools\nuget.exe" pack "src\EntityFramework.Testing.Moq\EntityFramework.Testing.Moq.nuspec" -OutputDirectory build
-"tools\nuget.exe" pack "src\EntityFramework.Testing.Moq.Ninject\EntityFramework.Testing.Moq.Ninject.nuspec" -OutputDirectory build
+"tools\nuget.exe" pack "src\EntityFramework.Testing\EntityFramework.Testing.nuspec" -OutputDirectory build -Version 1.0.2
+"tools\nuget.exe" pack "src\EntityFramework.Testing.Moq\EntityFramework.Testing.Moq.nuspec" -OutputDirectory build -Version 1.0.2
+"tools\nuget.exe" pack "src\EntityFramework.Testing.Moq.Ninject\EntityFramework.Testing.Moq.Ninject.nuspec" -OutputDirectory build -Version 1.0.2
 
 ::DEPLOY
 ::"tools\nuget.exe" push "build\*.nupkg"

@@ -5,7 +5,7 @@
 
 The project is cut from EntityFrameworks' [source code](http://entityframework.codeplex.com/SourceControl/latest#test/EntityFramework/FunctionalTests/TestDoubles/). Some changes are made to be compliance with StyleCop/CodeAnalysis
 
-## EntityFramework.Testing.Moq [![NuGet Version](http://img.shields.io/nuget/v/EntityFrameworkTesting.Moq.svg?style=flat)](https://www.nuget.org/packages/EntityFrameworkTesting/) [![NuGet Downloads](http://img.shields.io/nuget/dt/EntityFrameworkTesting.Moq.svg?style=flat)](https://www.nuget.org/packages/EntityFrameworkTesting/)
+## EntityFramework.Testing.Moq [![NuGet Version](http://img.shields.io/nuget/v/EntityFrameworkTesting.Moq.svg?style=flat)](https://www.nuget.org/packages/EntityFrameworkTesting.Moq/) [![NuGet Downloads](http://img.shields.io/nuget/dt/EntityFrameworkTesting.Moq.svg?style=flat)](https://www.nuget.org/packages/EntityFrameworkTesting.Moq/)
 **EntityFramework.Testing.Moq** provides a helpful extension method to mock EntityFramework's DbSets using Moq. 
 
 For example, given the following controller.
@@ -62,3 +62,26 @@ public async Task Index_returns_blogs_ordered_by_name()
     Assert.AreEqual("CCC", blogs[2].Name);
 }
 ```
+
+## EntityFramework.Testing.Moq.Ninject [![NuGet Version](http://img.shields.io/nuget/v/EntityFrameworkTesting.Moq.Ninject.svg?style=flat)](https://www.nuget.org/packages/EntityFrameworkTesting.Moq.Ninject/) [![NuGet Downloads](http://img.shields.io/nuget/dt/EntityFrameworkTesting.Moq.Ninject.svg?style=flat)](https://www.nuget.org/packages/EntityFrameworkTesting.Moq.Ninject/)
+**EntityFramework.Testing.Moq.Ninject** provides a helpful extension method to auto mock `DbContext`'s DbSets using Ninject.MockingKernel.Moq.
+
+`ToMockDbContext` extension method is part of EntityFramework.Testing.Moq.Ninject
+
+```
+[TestMethod]
+public void Can_setup_dbset()
+{
+    using (var kernel = new MoqMockingKernel())
+    {
+        kernel.Bind<BlogDbContext>().ToMockDbContext();
+
+        var db = kernel.Get<BlogDbContext>();
+
+        var blogs = new List<Blog> { new Blog(), new Blog() };
+        kernel.GetMock<DbSet<Blog>>().SetupData(blogs);
+
+        Assert.AreEqual(2, db.Blogs.Count());
+    }
+}
+``` 
