@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/scott-xu/EntityFramework.Testing.svg?branch=master)](https://travis-ci.org/scott-xu/EntityFramework.Testing)
+
 ## EntityFramework.Testing
 EntityFramework.Testing provides an implementation of `DbAsyncQueryProvider` that can be used when testing a component that uses async queries with EntityFramework. You can read more about how to use these components at http://msdn.com/data/dn314429#async.
 
