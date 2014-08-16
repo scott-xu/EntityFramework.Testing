@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>EntityFrameworkTesting.Moq.Ninject</id>
-    <version>1.0.1</version>
+    <version>1.0.3</version>
     <title>EntityFramework.Testing.Moq.Ninject</title>
     <authors>Scott Xu</authors>
     <owners>scott xu</owners>
@@ -13,7 +13,7 @@
     <copyright>Copyright 2014</copyright>
     <tags>EntityFramework Entity Framework EF EF6 Testing Moq Ninject Mocking</tags>
     <dependencies>
-      <dependency id="EntityFrameworkTesting.Moq" version="1.0.1" />
+      <dependency id="EntityFrameworkTesting.Moq" version="1.0.3" />
       <dependency id="Ninject.MockingKernel.Moq" version="3.2.0" />
     </dependencies>
   </metadata>
