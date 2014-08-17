@@ -37,14 +37,16 @@ namespace Ninject.MockingKernel
             var result = builder.ToMock().InSingletonScope();
 
             foreach (var dbsetType in typeof(T).GetProperties()
-                .Where(p => p.PropertyType.IsGenericType && p.PropertyType.GetGenericTypeDefinition() == typeof(DbSet<>) && p.CanWrite)
+                .Where(p => p.PropertyType.IsGenericType && 
+                            p.PropertyType.GetGenericTypeDefinition() == typeof(DbSet<>) && 
+                            p.CanWrite)
                 .Select(pi => pi.PropertyType))
             {
                 kernel.Bind(dbsetType)
                     .ToMethod(ctx =>
                     {
-                        dynamic mDbSet = kernel.Get(typeof(Mock<>).MakeGenericType(new[] { dbsetType }));
-                        return mDbSet.Object;
+                        dynamic mockDbSet = kernel.Get(typeof(Mock<>).MakeGenericType(new[] { dbsetType }));
+                        return mockDbSet.Object;
                     })
                     .InSingletonScope();
 
