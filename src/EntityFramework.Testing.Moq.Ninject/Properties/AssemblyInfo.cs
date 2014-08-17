@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("EntityFramework.Testing.Moq.Ninject")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Testing helpers for using Ninject.MockingKernel.Moq with EntityFramework.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Scott Xu")]
 [assembly: AssemblyProduct("EntityFramework.Testing.Moq.Ninject")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
