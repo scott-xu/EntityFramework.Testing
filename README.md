@@ -64,9 +64,7 @@ public async Task Index_returns_blogs_ordered_by_name()
 ```
 
 ## EntityFramework.Testing.Moq.Ninject [![NuGet Version](http://img.shields.io/nuget/v/EntityFrameworkTesting.Moq.Ninject.svg?style=flat)](https://www.nuget.org/packages/EntityFrameworkTesting.Moq.Ninject/) [![NuGet Downloads](http://img.shields.io/nuget/dt/EntityFrameworkTesting.Moq.Ninject.svg?style=flat)](https://www.nuget.org/packages/EntityFrameworkTesting.Moq.Ninject/)
-**EntityFramework.Testing.Moq.Ninject** provides a helpful extension method to auto mock `DbContext`'s DbSets using Ninject.MockingKernel.Moq.
-
-`ToMockDbContext` extension method is part of EntityFramework.Testing.Moq.Ninject
+**EntityFramework.Testing.Moq.Ninject** provides a Ninject Module to auto mock `DbContext` and its 'DbSet's using Ninject.MockingKernel.Moq.
 
 ```C#
 [TestMethod]
@@ -74,6 +72,8 @@ public async Task Index_returns_blogs_ordered_by_name()
 {
     using (var kernel = new MoqMockingKernel())
     {
+        kernel.Load(new EntityFrameworkTestingMoqModule());
+
         // Create some test data
         var data = new List<Blog>
         {
@@ -82,9 +82,6 @@ public async Task Index_returns_blogs_ordered_by_name()
             new Blog{ Name = "AAA" }
         };
         
-        // Bind BloggingContext to mock
-        kernel.Bind<BloggingContext>().ToMockDbContext();
-
         // Setup mock set
         kernel.GetMock<DbSet<Blog>>()
             .SetupData(data);

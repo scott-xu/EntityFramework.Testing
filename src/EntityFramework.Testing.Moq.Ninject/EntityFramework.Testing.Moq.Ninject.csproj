@@ -33,7 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BindingSyntaxExtensions.cs" />
+    <Compile Include="DbSetInjectionHeuristic.cs" />
+    <Compile Include="DbSetInjectionStrategy.cs" />
+    <Compile Include="EntityFrameworkTestingMoqModule.cs" />
+    <Compile Include="MockEntityFrameworkBindingResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

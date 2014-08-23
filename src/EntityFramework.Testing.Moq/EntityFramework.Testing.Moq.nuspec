@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>EntityFrameworkTesting.Moq</id>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <title>EntityFramework.Testing.Moq</title>
     <authors>Microsoft Open Technologies, Inc; Rowan Miller; Scott Xu</authors>
     <owners>scott xu</owners>
@@ -13,7 +13,8 @@
     <copyright>Copyright 2014</copyright>
     <tags>EntityFramework Entity Framework EF EF6 Testing Moq</tags>
     <dependencies>
-      <dependency id="EntityFrameworkTesting" version="1.0.5" />
+      <dependency id="EntityFrameworkTesting" version="1.0.6" />
+      <dependency id="Moq" version="4.2.1408.0717" />
     </dependencies>
   </metadata>
   <files>

@@ -6,7 +6,6 @@
     using System.Linq;
     using global::Moq;
     using global::Ninject;
-    using global::Ninject.MockingKernel;
     using global::Ninject.MockingKernel.Moq;
 
     [TestClass]
@@ -17,11 +16,10 @@
         {
             using (var kernel = new MoqMockingKernel())
             {
-                kernel.Bind<BlogDbContext>().ToMockDbContext();
+                kernel.Load(new EntityFrameworkTestingMoqModule());
 
                 var db = kernel.Get<BlogDbContext>();
 
-                Assert.IsNotNull(db);
                 Assert.IsNotNull(db.Blogs);
             }
         }
@@ -31,14 +29,27 @@
         {
             using (var kernel = new MoqMockingKernel())
             {
-                kernel.Bind<BlogDbContext>().ToMockDbContext();
-
-                var db = kernel.Get<BlogDbContext>();
+                kernel.Load(new EntityFrameworkTestingMoqModule());
 
                 var blogs = new List<Blog> { new Blog(), new Blog() };
                 kernel.GetMock<DbSet<Blog>>().SetupData(blogs);
 
+                var db = kernel.Get<BlogDbContext>();
+
                 Assert.AreEqual(2, db.Blogs.Count());
+            }
+        }
+
+        [TestMethod]
+        public void Can_query_dbset_if_not_setup()
+        {
+            using (var kernel = new MoqMockingKernel())
+            {
+                kernel.Load(new EntityFrameworkTestingMoqModule());
+
+                var db = kernel.Get<BlogDbContext>();
+
+                Assert.AreEqual(0, db.Blogs.Count());
             }
         }
 
