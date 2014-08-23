@@ -64,7 +64,7 @@ public async Task Index_returns_blogs_ordered_by_name()
 ```
 
 ## EntityFramework.Testing.Moq.Ninject [![NuGet Version](http://img.shields.io/nuget/v/EntityFrameworkTesting.Moq.Ninject.svg?style=flat)](https://www.nuget.org/packages/EntityFrameworkTesting.Moq.Ninject/) [![NuGet Downloads](http://img.shields.io/nuget/dt/EntityFrameworkTesting.Moq.Ninject.svg?style=flat)](https://www.nuget.org/packages/EntityFrameworkTesting.Moq.Ninject/)
-**EntityFramework.Testing.Moq.Ninject** provides a Ninject Module to auto mock `DbContext` and its `DbSet`s using Ninject.MockingKernel.Moq.
+**EntityFramework.Testing.Moq.Ninject** provides a Ninject Module to auto mock `DbContext` and its `DbSet<>` properties using Ninject.MockingKernel.Moq.
 
 ```C#
 [TestMethod]
