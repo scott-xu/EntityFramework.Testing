@@ -14,7 +14,7 @@
     <tags>EntityFramework Entity Framework EF EF6 Testing Moq</tags>
     <dependencies>
       <dependency id="EntityFrameworkTesting" version="1.0.6" />
-      <dependency id="Moq" version="4.2.1408.0717" />
+      <dependency id="Moq" version="[4.2.1408.0717,5.0)" />
     </dependencies>
   </metadata>
   <files>
