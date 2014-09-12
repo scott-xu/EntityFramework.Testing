@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/scott-xu/EntityFramework.Testing.svg?branch=master)](https://travis-ci.org/scott-xu/EntityFramework.Testing)
-
 ## EntityFramework.Testing [![NuGet Version](http://img.shields.io/nuget/v/EntityFrameworkTesting.svg?style=flat)](https://www.nuget.org/packages/EntityFrameworkTesting/) [![NuGet Downloads](http://img.shields.io/nuget/dt/EntityFrameworkTesting.svg?style=flat)](https://www.nuget.org/packages/EntityFrameworkTesting/)
 **EntityFramework.Testing** provides an implementation of `DbAsyncQueryProvider` that can be used when testing a component that uses async queries with EntityFramework.
 
