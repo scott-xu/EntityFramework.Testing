@@ -33,8 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DbContextActivationStrategy.cs" />
     <Compile Include="DbSetInjectionHeuristic.cs" />
-    <Compile Include="DbSetInjectionStrategy.cs" />
+    <Compile Include="DbSetActivationStrategy.cs" />
     <Compile Include="EntityFrameworkTestingMoqModule.cs" />
     <Compile Include="MockEntityFrameworkBindingResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -94,7 +95,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="EntityFramework.Testing.Moq.Ninject.nuspec" />
+    <None Include="EntityFramework.Testing.Moq.Ninject.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

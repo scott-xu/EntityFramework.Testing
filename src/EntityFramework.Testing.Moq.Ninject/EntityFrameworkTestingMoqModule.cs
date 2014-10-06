@@ -22,11 +22,13 @@ namespace EntityFramework.Testing.Moq.Ninject
         /// </summary>
         public override void Load()
         {
-            this.Kernel.Components.Remove<IInjectionHeuristic, StandardInjectionHeuristic>();
             this.Kernel.Components.Add<IInjectionHeuristic, DbSetInjectionHeuristic>();
 
+            this.Kernel.Components.Add<IActivationStrategy, DbContextActivationStrategy>();
+            this.Kernel.Components.Add<IActivationStrategy, DbSetActivationStrategy>();
+
             this.Kernel.Components.Remove<IActivationStrategy, PropertyInjectionStrategy>();
-            this.Kernel.Components.Add<IActivationStrategy, DbSetInjectionStrategy>();
+            this.Kernel.Components.Add<IActivationStrategy, PropertyInjectionStrategy>();
 
             this.Kernel.Components.RemoveAll<IMissingBindingResolver>();
             this.Kernel.Components.Add<IMissingBindingResolver, MockEntityFrameworkBindingResolver>();
