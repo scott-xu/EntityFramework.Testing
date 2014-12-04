@@ -1,7 +1,6 @@
 ﻿//-----------------------------------------------------------------------------------------------------
-// <copyright file="NSubstituteDbSetExtensions.cs" company="Rowan Miller">
-//   Copyright (c) 2014 Rowan Miller.
-//   Modified by Justin Yoo.
+// <copyright file="NSubstituteDbSetExtensions.cs" company="Justin Yoo">
+//   Copyright (c) 2014 Justin Yoo.
 // </copyright>
 //-----------------------------------------------------------------------------------------------------
 

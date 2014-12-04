@@ -1,7 +1,6 @@
 ﻿//-----------------------------------------------------------------------------------------------------
-// <copyright file="AssemblyInfo.cs" company="Rowan Miller">
-//   Copyright (c) 2014 Rowan Miller.
-//   Modified by Justin Yoo.
+// <copyright file="AssemblyInfo.cs" company="Justin Yoo">
+//   Copyright (c) 2014 Justin Yoo.
 // </copyright>
 //-----------------------------------------------------------------------------------------------------
 
@@ -15,7 +14,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("EntityFramework.Testing.NSubstitute")]
 [assembly: AssemblyDescription("Testing helpers for using NSubstitute with Entity Framework")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Rowan Miller")]
+[assembly: AssemblyCompany("Justin Yoo")]
 [assembly: AssemblyProduct("EntityFramework.Testing.NSubstitute")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
