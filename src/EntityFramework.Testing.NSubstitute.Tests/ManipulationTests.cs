@@ -1,12 +1,20 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NSubstitute;
+﻿//-----------------------------------------------------------------------------------------------------
+// <copyright file="ManipulationTests.cs" company="Justin Yoo">
+//   Copyright (c) 2014 Justin Yoo.
+// </copyright>
+//-----------------------------------------------------------------------------------------------------
+
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NSubstitute;
 
 namespace EntityFramework.Testing.NSubstitute.Tests
 {
     [TestClass]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Allowed test class to be left without being documented.")]
     public class ManipulationTests
     {
         [TestMethod]
@@ -15,7 +23,7 @@ namespace EntityFramework.Testing.NSubstitute.Tests
             var blog = new Blog();
             var data = new List<Blog> { blog };
 
-            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>>()
+            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>()
                                 .SetupData(data);
 
             set.Remove(blog);
@@ -33,10 +41,10 @@ namespace EntityFramework.Testing.NSubstitute.Tests
             var range = new List<Blog> { blog, blog2 };
             var data = new List<Blog> { blog, blog2, new Blog() };
 
-            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>>()
+            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>()
                                 .SetupData(data);
 
-            ((DbSet<Blog>)set).RemoveRange(range);
+            set.RemoveRange(range);
 
             var result = set.ToList();
 
@@ -49,7 +57,7 @@ namespace EntityFramework.Testing.NSubstitute.Tests
             var blog = new Blog();
             var data = new List<Blog> { };
 
-            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>>()
+            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>()
                                 .SetupData(data);
 
             set.Add(blog);
@@ -64,10 +72,10 @@ namespace EntityFramework.Testing.NSubstitute.Tests
         {
             var data = new List<Blog> { new Blog(), new Blog() };
 
-            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>>()
+            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>()
                                 .SetupData(new List<Blog> { new Blog() });
 
-            ((DbSet<Blog>)set).AddRange(data);
+            set.AddRange(data);
 
             var result = set.ToList();
 

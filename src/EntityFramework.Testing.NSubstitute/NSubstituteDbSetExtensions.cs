@@ -4,16 +4,18 @@
 // </copyright>
 //-----------------------------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Linq;
+using EntityFramework.Testing;
+using NSubstitute.Core;
+
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1200:UsingDirectivesMustBePlacedWithinNamespace", Justification = "Allowed to place using directives outside namespace.")]
+
 namespace NSubstitute
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
-    using System.Linq;
-    using EntityFramework.Testing;
-    using NSubstitute.Core;
-
     /// <summary>
     /// Extension methods for <see cref="NSubstitute"/>.
     /// </summary>
@@ -23,76 +25,64 @@ namespace NSubstitute
         /// Setup data to <see cref="DbSet{T}"/>.
         /// </summary>
         /// <typeparam name="TEntity">The entity type.</typeparam>
-        /// <param name="dbset">The <see cref="DbSet{T}"/>.</param>
+        /// <param name="dbSet">The <see cref="DbSet{T}"/>.</param>
         /// <param name="data">The seed data.</param>
         /// <param name="find">The find action.</param>
         /// <returns>The updated <see cref="DbSet{T}"/>.</returns>
-        public static IDbSet<TEntity> SetupData<TEntity>(this IDbSet<TEntity> dbset, ICollection<TEntity> data = null, Func<object[], TEntity> find = null) where TEntity : class
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.NamingRules", "SA1305:FieldNamesMustNotUseHungarianNotation", Justification = "Allowed parameters starting with two lowercases followed by one uppercase.")]
+        public static DbSet<TEntity> SetupData<TEntity>(this DbSet<TEntity> dbSet, ICollection<TEntity> data = null, Func<object[], TEntity> find = null) where TEntity : class
         {
             data = data ?? new List<TEntity>();
             find = find ?? (o => null);
 
             var query = new InMemoryAsyncQueryable<TEntity>(data.AsQueryable());
 
-            dbset.Provider.Returns(query.Provider);
-            dbset.Expression.Returns(query.Expression);
-            dbset.ElementType.Returns(query.ElementType);
-            dbset.GetEnumerator().Returns(query.GetEnumerator());
+            ((IQueryable<TEntity>)dbSet).Provider.Returns(query.Provider);
+            ((IQueryable<TEntity>)dbSet).Expression.Returns(query.Expression);
+            ((IQueryable<TEntity>)dbSet).ElementType.Returns(query.ElementType);
+            ((IQueryable<TEntity>)dbSet).GetEnumerator().Returns(query.GetEnumerator());
 
 #if !NET40
-            if (dbset is IDbAsyncEnumerable)
-            {
-                ((IDbAsyncEnumerable<TEntity>)dbset).GetAsyncEnumerator().Returns(new InMemoryDbAsyncEnumerator<TEntity>(query.GetEnumerator()));
-                dbset.Provider.Returns(new InMemoryAsyncQueryProvider(query.Provider));
-            }
+            ((IDbAsyncEnumerable<TEntity>)dbSet).GetAsyncEnumerator().Returns(new InMemoryDbAsyncEnumerator<TEntity>(query.GetEnumerator()));
+            ((IQueryable<TEntity>)dbSet).Provider.Returns(query.Provider);
 #endif
 
-            dbset.Include(Arg.Any<string>()).Returns(dbset);
-            dbset.Find(Arg.Any<object[]>()).Returns(find as Func<CallInfo, TEntity>);
+            dbSet.Include(Arg.Any<string>()).Returns(dbSet);
+            dbSet.Find(Arg.Any<object[]>()).Returns(find as Func<CallInfo, TEntity>);
 
-            dbset.When(ds => ds.Remove(Arg.Any<TEntity>()))
-                 .Do(ci =>
-                 {
-                     var entity = ci.Arg<TEntity>();
-                     data.Remove(entity);
+            dbSet.Remove(Arg.Do<TEntity>(entity =>
+                                         {
+                                             data.Remove(entity);
+                                             dbSet.SetupData(data, find);
+                                         }));
 
-                     dbset.SetupData(data, find);
-                 });
+            dbSet.RemoveRange(Arg.Do<IEnumerable<TEntity>>(entities =>
+                                                           {
+                                                               foreach (var entity in entities)
+                                                               {
+                                                                   data.Remove(entity);
+                                                               }
 
-            ((DbSet<TEntity>)dbset).When(ds => ds.RemoveRange(Arg.Any<IEnumerable<TEntity>>()))
-                                    .Do(ci =>
-                                    {
-                                        var entities = ci.Arg<IEnumerable<TEntity>>();
-                                        foreach (var entity in entities)
-                                        {
-                                            data.Remove(entity);
-                                        }
+                                                               dbSet.SetupData(data, find);
+                                                           }));
 
-                                        dbset.SetupData(data, find);
-                                    });
+            dbSet.Add(Arg.Do<TEntity>(entity =>
+                                      {
+                                          data.Add(entity);
+                                          dbSet.SetupData(data, find);
+                                      }));
 
-            dbset.When(ds => ds.Add(Arg.Any<TEntity>()))
-                 .Do(ci =>
-                 {
-                     var entity = ci.Arg<TEntity>();
-                     data.Add(entity);
+            dbSet.AddRange(Arg.Do<IEnumerable<TEntity>>(entities =>
+                                                        {
+                                                            foreach (var entity in entities)
+                                                            {
+                                                                data.Add(entity);
+                                                            }
 
-                     dbset.SetupData(data, find);
-                 });
+                                                            dbSet.SetupData(data, find);
+                                                        }));
 
-            ((DbSet<TEntity>)dbset).When(ds => ds.AddRange(Arg.Any<IEnumerable<TEntity>>()))
-                                    .Do(ci =>
-                                    {
-                                        var entities = ci.Arg<IEnumerable<TEntity>>();
-                                        foreach (var entity in entities)
-                                        {
-                                            data.Add(entity);
-                                        }
-
-                                        dbset.SetupData(data, find);
-                                    });
-
-            return dbset;
+            return dbSet;
         }
     }
 }

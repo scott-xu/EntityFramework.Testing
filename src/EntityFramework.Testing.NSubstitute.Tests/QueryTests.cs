@@ -1,14 +1,21 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NSubstitute;
+﻿//-----------------------------------------------------------------------------------------------------
+// <copyright file="QueryTests.cs" company="Justin Yoo">
+//   Copyright (c) 2014 Justin Yoo.
+// </copyright>
+//-----------------------------------------------------------------------------------------------------
+
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NSubstitute;
 
 namespace EntityFramework.Testing.NSubstitute.Tests
 {
     [TestClass]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Allowed test class to be left without being documented.")]
     public class QueryTests
     {
         [TestMethod]
@@ -16,7 +23,7 @@ namespace EntityFramework.Testing.NSubstitute.Tests
         {
             var data = new List<Blog> { new Blog { }, new Blog { } };
 
-            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>>()
+            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>()
                                 .SetupData(data);
 
             var count = 0;
@@ -35,7 +42,7 @@ namespace EntityFramework.Testing.NSubstitute.Tests
         {
             var data = new List<Blog> { new Blog(), new Blog() };
 
-            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>>()
+            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>()
                                 .SetupData(data);
 
             var count = 0;
@@ -51,7 +58,7 @@ namespace EntityFramework.Testing.NSubstitute.Tests
         {
             var data = new List<Blog> { new Blog(), new Blog() };
 
-            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>>()
+            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>()
                                 .SetupData(data);
 
             var result = set.ToList();
@@ -86,7 +93,7 @@ namespace EntityFramework.Testing.NSubstitute.Tests
                 new Blog { BlogId = 3}
             };
 
-            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>>()
+            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>()
                                 .SetupData(data);
 
             var result = set.Where(b => b.BlogId > 1)
@@ -111,7 +118,7 @@ namespace EntityFramework.Testing.NSubstitute.Tests
             };
 
             var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>()
-                .SetupData(data);
+                                .SetupData(data);
 
             var result = await set.Where(b => b.BlogId > 1)
                                   .OrderByDescending(b => b.BlogId)
@@ -129,7 +136,7 @@ namespace EntityFramework.Testing.NSubstitute.Tests
         {
             var data = new List<Blog> { new Blog(), new Blog() };
 
-            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>>()
+            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>()
                                 .SetupData(data);
 
             var result = set.Include(b => b.Posts)
@@ -143,7 +150,7 @@ namespace EntityFramework.Testing.NSubstitute.Tests
         {
             var data = new List<Blog> { new Blog(), new Blog() };
 
-            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>>()
+            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>()
                 .SetupData(data);
 
             var result = set.OrderBy(b => b.BlogId)
