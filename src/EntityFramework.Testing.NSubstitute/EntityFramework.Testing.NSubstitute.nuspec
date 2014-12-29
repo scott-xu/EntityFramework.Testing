@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>EntityFrameworkTesting.NSubstitute</id>
+    <version>1.0.7</version>
+    <title>EntityFramework.Testing.NSubstitute</title>
+    <authors>Microsoft Open Technologies, Inc; Rowan Miller; Scott Xu; Justin Yoo</authors>
+    <owners>scott xu</owners>
+    <licenseUrl>https://github.com/scott-xu/EntityFramework.Testing/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/scott-xu/EntityFramework.Testing</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Testing helpers for using NSubstitute with EntityFramework.</description>
+    <copyright>Copyright 2014</copyright>
+    <tags>EntityFramework Entity Framework EF EF6 Testing NSubstitute</tags>
+    <dependencies>
+      <dependency id="EntityFrameworkTesting" version="[1.0.7,2.0.0)" />
+      <dependency id="NSubstitute" version="1.8.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\**\EntityFramework.Testing.NSubstitute.*" target="lib" exclude="**\*.config" />
+  </files>
+</package>
