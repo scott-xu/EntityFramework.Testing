@@ -21,7 +21,7 @@ namespace EntityFramework.Testing.NSubstitute.Tests
         public void Can_remove_set()
         {
             var blog = new Blog();
-            var data = new List<Blog> { blog };
+            var data = new List<Blog> { blog, new Blog() };
 
             var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>()
                                 .SetupData(data);
@@ -30,7 +30,7 @@ namespace EntityFramework.Testing.NSubstitute.Tests
 
             var result = set.ToList();
 
-            Assert.AreEqual(0, result.Count);
+            Assert.AreEqual(1, result.Count);
         }
 
         [TestMethod]

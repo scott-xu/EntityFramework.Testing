@@ -35,51 +35,40 @@ namespace NSubstitute
             data = data ?? new List<TEntity>();
             find = find ?? (o => null);
 
-            var query = new InMemoryAsyncQueryable<TEntity>(data.AsQueryable());
+            // In order to avoid enumerator modification exception, use the lambda expression to send query to the captured list.
+            // http://stackoverflow.com/questions/27308190/manipulating-objects-with-dbsett-and-iqueryablet-with-nsubstitute-returns-er#27474056
+            Func<IQueryable<TEntity>> getQuery = () => new InMemoryAsyncQueryable<TEntity>(data.AsQueryable());
 
-            ((IQueryable<TEntity>)dbSet).Provider.Returns(query.Provider);
-            ((IQueryable<TEntity>)dbSet).Expression.Returns(query.Expression);
-            ((IQueryable<TEntity>)dbSet).ElementType.Returns(query.ElementType);
-            ((IQueryable<TEntity>)dbSet).GetEnumerator().Returns(query.GetEnumerator());
+            ((IQueryable<TEntity>)dbSet).Provider.Returns(info => getQuery().Provider);
+            ((IQueryable<TEntity>)dbSet).Expression.Returns(info => getQuery().Expression);
+            ((IQueryable<TEntity>)dbSet).ElementType.Returns(info => getQuery().ElementType);
+            ((IQueryable<TEntity>)dbSet).GetEnumerator().Returns(info => getQuery().GetEnumerator());
 
 #if !NET40
-            ((IDbAsyncEnumerable<TEntity>)dbSet).GetAsyncEnumerator().Returns(new InMemoryDbAsyncEnumerator<TEntity>(query.GetEnumerator()));
-            ((IQueryable<TEntity>)dbSet).Provider.Returns(query.Provider);
+            ((IDbAsyncEnumerable<TEntity>)dbSet).GetAsyncEnumerator()
+                                                .Returns(info => new InMemoryDbAsyncEnumerator<TEntity>(getQuery().GetEnumerator()));
+            ((IQueryable<TEntity>)dbSet).Provider.Returns(info => getQuery().Provider);
 #endif
 
             dbSet.Include(Arg.Any<string>()).Returns(dbSet);
             dbSet.Find(Arg.Any<object[]>()).Returns(find as Func<CallInfo, TEntity>);
 
-            dbSet.Remove(Arg.Do<TEntity>(entity =>
-                                         {
-                                             data.Remove(entity);
-                                             dbSet.SetupData(data, find);
-                                         }));
-
+            dbSet.Remove(Arg.Do<TEntity>(entity => data.Remove(entity)));
             dbSet.RemoveRange(Arg.Do<IEnumerable<TEntity>>(entities =>
                                                            {
                                                                foreach (var entity in entities)
                                                                {
                                                                    data.Remove(entity);
                                                                }
-
-                                                               dbSet.SetupData(data, find);
                                                            }));
 
-            dbSet.Add(Arg.Do<TEntity>(entity =>
-                                      {
-                                          data.Add(entity);
-                                          dbSet.SetupData(data, find);
-                                      }));
-
+            dbSet.Add(Arg.Do<TEntity>(entity => data.Add(entity)));
             dbSet.AddRange(Arg.Do<IEnumerable<TEntity>>(entities =>
                                                         {
                                                             foreach (var entity in entities)
                                                             {
                                                                 data.Add(entity);
                                                             }
-
-                                                            dbSet.SetupData(data, find);
                                                         }));
 
             return dbSet;
