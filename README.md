@@ -97,3 +97,63 @@ public async Task Index_returns_blogs_ordered_by_name()
     }
 }
 ``` 
+
+
+## EntityFramework.Testing.NSubstitute ##
+
+**EntityFramework.Testing.NSubstitute** provides a helpful extension method to mock EntityFramework's DbSets using [NSubstitute](http://nsubstitute.github.io/). 
+
+For example, given the following controller.
+
+```C#
+public class BlogsController : Controller
+{
+    private readonly BloggingContext db;
+
+    public BlogsController(BloggingContext context)
+    {
+        db = context;
+    }
+
+    public async Task<ViewResult> Index()
+    {
+        var query = db.Blogs.OrderBy(b => b.Name);
+
+        return View(await query.ToListAsync());
+    }
+}
+```
+
+You can write a unit test against an mock context as follows. `SetupData` extension method is part of EntityFramework.Testing.NSubstitute.
+
+```C#
+[TestMethod]
+public async Task Index_returns_blogs_ordered_by_name()
+{
+    // Create some test data
+    var data = new List<Blog>
+    {
+        new Blog{ Name = "BBB" },
+        new Blog{ Name = "CCC" },
+        new Blog{ Name = "AAA" }
+    };
+
+    // Create a DbSet substitute.
+    var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>()
+                        .SetupData(data);
+
+    var context = Substitute.For<BloggingContext>();
+    context.Blogs.Returns(set);
+
+    // Create a BlogsController and invoke the Index action
+    var controller = new BlogsController(context);
+    var result = await controller.Index();
+
+    // Check the results
+    var blogs = (List<Blog>)result.Model;
+    Assert.AreEqual(3, blogs.Count());
+    Assert.AreEqual("AAA", blogs[0].Name);
+    Assert.AreEqual("BBB", blogs[1].Name);
+    Assert.AreEqual("CCC", blogs[2].Name);
+}
+```
