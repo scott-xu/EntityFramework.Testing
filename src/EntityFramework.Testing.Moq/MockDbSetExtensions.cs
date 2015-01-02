@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------------------------------------
-// <copyright file="MockDbSetExtenstions.cs" company="Rowan Miller">
+// <copyright file="MockDbSetExtensions.cs" company="Rowan Miller">
 //   Copyright (c) 2014 Rowan Miller.
 //   Modified by Scott Xu.
 // </copyright>
@@ -18,7 +18,7 @@ namespace Moq
     /// <summary>
     /// Extension methods for <see cref="Mock{T}"/>.
     /// </summary>
-    public static class MockDbSetExtenstions
+    public static class MockDbSetExtensions
     {
         /// <summary>
         /// Setup data to <see cref="Mock{T}"/>.

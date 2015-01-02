@@ -9,22 +9,20 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
+using Xunit;
 
 namespace EntityFramework.Testing.NSubstitute.Tests
 {
-    [TestClass]
     [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Allowed test class to be left without being documented.")]
     public class QueryTests
     {
-        [TestMethod]
+        [Fact]
         public void Can_enumerate_set()
         {
             var data = new List<Blog> { new Blog { }, new Blog { } };
 
-            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>()
-                                .SetupData(data);
+            var set = this.GetSubstituteDbSet().SetupData(data);
 
             var count = 0;
             foreach (var item in set)
@@ -32,58 +30,55 @@ namespace EntityFramework.Testing.NSubstitute.Tests
                 count++;
             }
 
-            Assert.AreEqual(2, count);
+            Assert.Equal(2, count);
         }
 
 #if !NET40
 
-        [TestMethod]
+        [Fact]
         public async Task Can_enumerate_set_async()
         {
             var data = new List<Blog> { new Blog(), new Blog() };
 
-            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>()
-                                .SetupData(data);
+            var set = this.GetSubstituteDbSet().SetupData(data);
 
             var count = 0;
             await set.ForEachAsync(b => count++);
 
-            Assert.AreEqual(2, count);
+            Assert.Equal(2, count);
         }
 
 #endif
 
-        [TestMethod]
+        [Fact]
         public void Can_use_linq_materializer_directly_on_set()
         {
             var data = new List<Blog> { new Blog(), new Blog() };
 
-            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>()
-                                .SetupData(data);
+            var set = this.GetSubstituteDbSet().SetupData(data);
 
             var result = set.ToList();
 
-            Assert.AreEqual(2, result.Count);
+            Assert.Equal(2, result.Count);
         }
 
 #if !NET40
 
-        [TestMethod]
+        [Fact]
         public async Task Can_use_linq_materializer_directly_on_set_async()
         {
             var data = new List<Blog> { new Blog(), new Blog() };
 
-            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>()
-                                .SetupData(data);
+            var set = this.GetSubstituteDbSet().SetupData(data);
 
             var result = await set.ToListAsync();
 
-            Assert.AreEqual(2, result.Count);
+            Assert.Equal(2, result.Count);
         }
 
 #endif
 
-        [TestMethod]
+        [Fact]
         public void Can_use_linq_opeartors()
         {
             var data = new List<Blog>
@@ -93,21 +88,20 @@ namespace EntityFramework.Testing.NSubstitute.Tests
                 new Blog { BlogId = 3}
             };
 
-            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>()
-                                .SetupData(data);
+            var set = this.GetSubstituteDbSet().SetupData(data);
 
             var result = set.Where(b => b.BlogId > 1)
                             .OrderByDescending(b => b.BlogId)
                             .ToList();
 
-            Assert.AreEqual(2, result.Count);
-            Assert.AreEqual(3, result[0].BlogId);
-            Assert.AreEqual(2, result[1].BlogId);
+            Assert.Equal(2, result.Count);
+            Assert.Equal(3, result[0].BlogId);
+            Assert.Equal(2, result[1].BlogId);
         }
 
 #if !NET40
 
-        [TestMethod]
+        [Fact]
         public async Task Can_use_linq_opeartors_async()
         {
             var data = new List<Blog>
@@ -117,47 +111,53 @@ namespace EntityFramework.Testing.NSubstitute.Tests
                 new Blog { BlogId = 3}
             };
 
-            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>()
-                                .SetupData(data);
+            var set = this.GetSubstituteDbSet().SetupData(data);
 
             var result = await set.Where(b => b.BlogId > 1)
                                   .OrderByDescending(b => b.BlogId)
                                   .ToListAsync();
 
-            Assert.AreEqual(2, result.Count);
-            Assert.AreEqual(3, result[0].BlogId);
-            Assert.AreEqual(2, result[1].BlogId);
+            Assert.Equal(2, result.Count);
+            Assert.Equal(3, result[0].BlogId);
+            Assert.Equal(2, result[1].BlogId);
         }
 
 #endif
 
-        [TestMethod]
+        [Fact]
         public void Can_use_include_directly_on_set()
         {
             var data = new List<Blog> { new Blog(), new Blog() };
 
-            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>()
-                                .SetupData(data);
+            var set = this.GetSubstituteDbSet().SetupData(data);
 
             var result = set.Include(b => b.Posts)
                             .ToList();
 
-            Assert.AreEqual(2, result.Count);
+            Assert.Equal(2, result.Count);
         }
 
-        [TestMethod]
+        [Fact]
         public void Can_use_include_after_linq_operator()
         {
             var data = new List<Blog> { new Blog(), new Blog() };
 
-            var set = Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>()
-                .SetupData(data);
+            var set = this.GetSubstituteDbSet().SetupData(data);
 
             var result = set.OrderBy(b => b.BlogId)
                             .Include(b => b.Posts)
                             .ToList();
 
-            Assert.AreEqual(2, result.Count);
+            Assert.Equal(2, result.Count);
+        }
+
+        private DbSet<Blog> GetSubstituteDbSet()
+        {
+#if NET40
+            return Substitute.For<DbSet<Blog>, IQueryable<Blog>>();
+#else
+            return Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>();
+#endif
         }
 
         public class Blog

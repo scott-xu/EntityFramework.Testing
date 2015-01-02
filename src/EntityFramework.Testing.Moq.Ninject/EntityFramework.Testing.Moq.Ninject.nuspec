@@ -1,8 +1,8 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <package >
   <metadata>
     <id>EntityFrameworkTesting.Moq.Ninject</id>
-    <version>1.0.7</version>
+    <version>1.1.0</version>
     <title>EntityFramework.Testing.Moq.Ninject</title>
     <authors>Scott Xu</authors>
     <owners>scott xu</owners>
@@ -10,11 +10,12 @@
     <projectUrl>https://github.com/scott-xu/EntityFramework.Testing</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Testing helpers for using Ninject.MockingKernel.Moq with EntityFramework.</description>
-    <copyright>Copyright 2014</copyright>
-    <tags>EntityFramework Entity Framework EF EF6 Testing Moq Ninject Mocking</tags>
+    <copyright>Copyright 2015 Scott Xu</copyright>
+    <tags>EntityFramework Entity Framework EF EF6 Testing Ninject Mocking Moq</tags>
     <dependencies>
-      <dependency id="EntityFrameworkTesting.Moq" version="[1.0.7,2.0.0)" />
-      <dependency id="Ninject.MockingKernel.Moq" version="[3.2.0,4.0.0)" />
+      <dependency id="EntityFrameworkTesting.Ninject" version="[1.1.0,2.0.0)" />
+      <dependency id="Ninject.MockingKernel.Moq" version="[3.2.1,4.0.0)" />
+      <dependency id="Moq" version="[4.2.1409.1722,5.0)" />
     </dependencies>
   </metadata>
   <files>

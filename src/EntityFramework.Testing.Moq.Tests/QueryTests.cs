@@ -1,33 +1,32 @@
 ﻿using System.Data.Entity;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Moq;
+using Xunit;
 
 namespace EntityFramework.Testing.Moq.Tests
 {
-    [TestClass]
     public class QueryTests
     {
-        [TestMethod]
+        [Fact]
         public void Can_enumerate_set()
         {
-            var data = new List<Blog> { new Blog {},  new Blog {}  };
+            var data = new List<Blog> { new Blog { }, new Blog { } };
 
             var set = new Mock<DbSet<Blog>>()
             .SetupData(data);
 
             var count = 0;
-            foreach (var item in set.Object)
+            foreach (var item in set.Object)                            
             {
                 count++;
             }
 
-            Assert.AreEqual(2, count);
+            Assert.Equal(2, count);
         }
 #if !NET40
-        [TestMethod]
+        [Fact]
         public async Task Can_enumerate_set_async()
         {
             var data = new List<Blog> { new Blog(), new Blog() };
@@ -38,10 +37,10 @@ namespace EntityFramework.Testing.Moq.Tests
             var count = 0;
             await set.Object.ForEachAsync(b => count++);
 
-            Assert.AreEqual(2, count);
+            Assert.Equal(2, count);
         }
 #endif
-        [TestMethod]
+        [Fact]
         public void Can_use_linq_materializer_directly_on_set()
         {
             var data = new List<Blog> { new Blog(), new Blog() };
@@ -51,11 +50,11 @@ namespace EntityFramework.Testing.Moq.Tests
 
             var result = set.Object.ToList();
 
-            Assert.AreEqual(2, result.Count);
+            Assert.Equal(2, result.Count);
         }
 
 #if !NET40
-        [TestMethod]
+        [Fact]
         public async Task Can_use_linq_materializer_directly_on_set_async()
         {
             var data = new List<Blog> { new Blog(), new Blog() };
@@ -65,11 +64,11 @@ namespace EntityFramework.Testing.Moq.Tests
 
             var result = await set.Object.ToListAsync();
 
-            Assert.AreEqual(2, result.Count);
+            Assert.Equal(2, result.Count);
         }
 #endif
 
-        [TestMethod]
+        [Fact]
         public void Can_use_linq_opeartors()
         {
             var data = new List<Blog> 
@@ -87,13 +86,13 @@ namespace EntityFramework.Testing.Moq.Tests
                 .OrderByDescending(b => b.BlogId)
                 .ToList();
 
-            Assert.AreEqual(2, result.Count);
-            Assert.AreEqual(3, result[0].BlogId);
-            Assert.AreEqual(2, result[1].BlogId);
+            Assert.Equal(2, result.Count);
+            Assert.Equal(3, result[0].BlogId);
+            Assert.Equal(2, result[1].BlogId);
         }
 
 #if !NET40
-        [TestMethod]
+        [Fact]
         public async Task Can_use_linq_opeartors_async()
         {
             var data = new List<Blog> 
@@ -111,14 +110,14 @@ namespace EntityFramework.Testing.Moq.Tests
                 .OrderByDescending(b => b.BlogId)
                 .ToListAsync();
 
-            Assert.AreEqual(2, result.Count);
-            Assert.AreEqual(3, result[0].BlogId);
-            Assert.AreEqual(2, result[1].BlogId);
+            Assert.Equal(2, result.Count);
+            Assert.Equal(3, result[0].BlogId);
+            Assert.Equal(2, result[1].BlogId);
         }
 
 #endif
 
-        [TestMethod]
+        [Fact]
         public void Can_use_include_directly_on_set()
         {
             var data = new List<Blog> { new Blog(), new Blog() };
@@ -130,10 +129,10 @@ namespace EntityFramework.Testing.Moq.Tests
                 .Include(b => b.Posts)
                 .ToList();
 
-            Assert.AreEqual(2, result.Count);
+            Assert.Equal(2, result.Count);
         }
 
-        [TestMethod]
+        [Fact]
         public void Can_use_include_after_linq_operator()
         {
             var data = new List<Blog> { new Blog(), new Blog() };
@@ -146,7 +145,7 @@ namespace EntityFramework.Testing.Moq.Tests
                 .Include(b => b.Posts)
                 .ToList();
 
-            Assert.AreEqual(2, result.Count);
+            Assert.Equal(2, result.Count);
         }
 
         public class Blog

@@ -1,11 +1,11 @@
 ﻿//-----------------------------------------------------------------------------------------------------
 // <copyright file="AssemblyInfo.cs" company="Scott Xu">
-//   Copyright (c) 2014 Scott Xu.
+//   Copyright (c) 2015 Scott Xu.
 // </copyright>
 //-----------------------------------------------------------------------------------------------------
 
-using System;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
@@ -16,7 +16,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Scott Xu")]
 [assembly: AssemblyProduct("EntityFramework.Testing.Moq.Ninject")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyCopyright("Copyright 2015 Scott Xu")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -26,7 +26,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("2667643d-7830-421c-b495-7545da9f42c7")]
+[assembly: Guid("5eb0b935-bac3-467b-ba5c-00f9e843ea98")]
 
 // Version information for an assembly consists of the following four values:
 //

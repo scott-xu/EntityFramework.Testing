@@ -1,18 +1,17 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
+﻿using Moq;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit;
 
 namespace EntityFramework.Testing.Moq.Tests
 {
-    [TestClass]
     public class ManipulationTests
     {
-        [TestMethod]
+        [Fact]
         public void Can_remove_set()
         {
             var blog = new Blog();
@@ -25,10 +24,10 @@ namespace EntityFramework.Testing.Moq.Tests
 
             var result = set.Object.ToList();
 
-            Assert.AreEqual(0, result.Count);
+            Assert.Equal(0, result.Count);
         }
 
-        [TestMethod]
+        [Fact]
         public void Can_removeRange_sets()
         {
             var blog = new Blog();
@@ -43,10 +42,10 @@ namespace EntityFramework.Testing.Moq.Tests
 
             var result = set.Object.ToList();
 
-            Assert.AreEqual(1, result.Count);
+            Assert.Equal(1, result.Count);
         }
 
-        [TestMethod]
+        [Fact]
         public void Can_add_set()
         {
             var blog = new Blog();
@@ -59,10 +58,10 @@ namespace EntityFramework.Testing.Moq.Tests
 
             var result = set.Object.ToList();
 
-            Assert.AreEqual(1, result.Count);
+            Assert.Equal(1, result.Count);
         }
 
-        [TestMethod]
+        [Fact]
         public void Can_addRange_sets()
         {
             var data = new List<Blog> { new Blog(), new Blog() };
@@ -74,7 +73,7 @@ namespace EntityFramework.Testing.Moq.Tests
 
             var result = set.Object.ToList();
 
-            Assert.AreEqual(3, result.Count);
+            Assert.Equal(3, result.Count);
         }
 
         public class Blog

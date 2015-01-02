@@ -4,11 +4,12 @@
 // </copyright>
 //-----------------------------------------------------------------------------------------------------
 
-namespace EntityFramework.Testing.Moq.Ninject
+namespace EntityFramework.Testing.Ninject
 {
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
     using System.Linq;
     using global::Ninject.Activation;
     using global::Ninject.Components;
@@ -44,7 +45,7 @@ namespace EntityFramework.Testing.Moq.Ninject
         /// <returns>The series of matching bindings.</returns>
         public IEnumerable<IBinding> Resolve(Multimap<Type, IBinding> bindings, IRequest request)
         {
-            if (typeof(DbContext).IsAssignableFrom(request.Service) || (request.Service.IsGenericType() && request.Service.GetGenericTypeDefinition() == typeof(DbSet<>)))
+            if (typeof(DbContext).IsAssignableFrom(request.Service))
             {
                 return new[]
                 {
@@ -55,6 +56,22 @@ namespace EntityFramework.Testing.Moq.Ninject
                         IsImplicit = true
                     }
                 };
+            }
+
+            if (request.Service.IsGenericType() && request.Service.GetGenericTypeDefinition() == typeof(DbSet<>))
+            {
+                var binding = new Binding(request.Service)
+                {
+                    ProviderCallback = this.mockProviderCallbackProvider.GetCreationCallback(),
+                    ScopeCallback = ctx => StandardScopeCallbacks.Singleton,
+                    IsImplicit = true
+                };
+
+                binding.Parameters.Add(new AdditionalInterfaceParameter(typeof(IQueryable<>).MakeGenericType(request.Service.GetGenericArguments())));
+#if !NET40
+                binding.Parameters.Add(new AdditionalInterfaceParameter(typeof(IDbAsyncEnumerable<>).MakeGenericType(request.Service.GetGenericArguments())));
+#endif
+                return new[] { binding };
             }
 
             return Enumerable.Empty<IBinding>();
