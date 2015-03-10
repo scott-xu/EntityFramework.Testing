@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>EntityFrameworkTesting.NSubstitute.Ninject</id>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
     <title>EntityFramework.Testing.NSubstitute.Ninject</title>
     <authors>Scott Xu</authors>
     <owners>scott xu</owners>
@@ -13,12 +13,13 @@
     <copyright>Copyright 2015 Scott Xu</copyright>
     <tags>EntityFramework Entity Framework EF EF6 Testing Ninject Mocking NSubstitute</tags>
     <dependencies>
-      <dependency id="EntityFrameworkTesting.Ninject" version="[1.1.1,2.0.0)" />
+      <dependency id="EntityFrameworkTesting.NSubstitute" version="[1.1.2,2.0.0)" />
+      <dependency id="EntityFrameworkTesting.Ninject" version="[1.1.2,2.0.0)" />
       <dependency id="Ninject.MockingKernel.NSubstitute" version="[3.2.1,4.0.0)" />
       <dependency id="NSubstitute" version="[1.8.1,2.0.0)" />
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\**\EntityFramework.Testing.NSubstitute.Ninject.*" target="lib" exclude="**\*.config" />
+    <file src="bin\Release\**\EntityFramework.Testing.NSubstitute.Ninject.*" target="lib" exclude="**\*.config;**\*.CodeAnalysisLog.xml;**\*.lastcodeanalysissucceeded" />
   </files>
 </package>

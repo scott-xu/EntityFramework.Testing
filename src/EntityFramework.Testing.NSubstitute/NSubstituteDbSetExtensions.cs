@@ -15,7 +15,7 @@ namespace NSubstitute
     using NSubstitute.Core;
 
     /// <summary>
-    /// Extension methods for <see cref="NSubstitute"/>.
+    /// Extension methods for <see cref="DbSet{T}"/>.
     /// </summary>
     public static class NSubstituteDbSetExtensions
     {

@@ -22,17 +22,6 @@
 
         [Fact]
         public abstract void Can_setup_dbset();
-        //{
-            //using (var kernel = this.CreateMockingKernel())
-            //{
-            //    var blogs = new List<Blog> { new Blog(), new Blog() };
-            //    kernel.GetMock<DbSet<Blog>>().SetupData(blogs);
-
-            //    var db = kernel.Get<BlogDbContext>();
-
-            //    Assert.AreEqual(2, db.Blogs.Count());
-            //}
-        //}
 
         [Fact]
         public void Can_query_dbset_if_not_setup()
