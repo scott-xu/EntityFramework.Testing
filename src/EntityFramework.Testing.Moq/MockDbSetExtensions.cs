@@ -38,9 +38,9 @@ namespace Moq
             mock.As<IQueryable<TEntity>>().Setup(m => m.Provider).Returns(query.Provider);
             mock.As<IQueryable<TEntity>>().Setup(m => m.Expression).Returns(query.Expression);
             mock.As<IQueryable<TEntity>>().Setup(m => m.ElementType).Returns(query.ElementType);
-            mock.As<IQueryable<TEntity>>().Setup(m => m.GetEnumerator()).Returns(query.GetEnumerator());
+            mock.As<IQueryable<TEntity>>().Setup(m => m.GetEnumerator()).Returns(query.GetEnumerator);
 #if !NET40
-            mock.As<IDbAsyncEnumerable<TEntity>>().Setup(m => m.GetAsyncEnumerator()).Returns(query.GetAsyncEnumerator());
+            mock.As<IDbAsyncEnumerable<TEntity>>().Setup(m => m.GetAsyncEnumerator()).Returns(query.GetAsyncEnumerator);
 #endif
             mock.Setup(m => m.Include(It.IsAny<string>())).Returns(mock.Object);
             mock.Setup(m => m.Find(It.IsAny<object[]>())).Returns<object[]>(find);

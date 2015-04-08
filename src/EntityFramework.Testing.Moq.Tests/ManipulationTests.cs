@@ -76,6 +76,19 @@ namespace EntityFramework.Testing.Moq.Tests
             Assert.Equal(3, result.Count);
         }
 
+        [Fact]
+        public void Can_toList_twice()
+        {
+            var set = new Mock<DbSet<Blog>>()
+                .SetupData(new List<Blog> { new Blog() });
+
+            var result = set.Object.ToList();
+
+            var result2 = set.Object.ToList();
+
+            Assert.Equal(1, result2.Count);
+        }
+
         public class Blog
         {
             public int BlogId { get; set; }
