@@ -114,9 +114,10 @@ namespace EntityFramework.Testing
         /// <param name="expression">The expression tree.</param>
         /// <param name="cancellationToken">The <see cref="CancellationToken"/>.</param>
         /// <returns>The result task.</returns>
-        public Task<object> ExecuteAsync(Expression expression, CancellationToken cancellationToken)
+        public async Task<object> ExecuteAsync(Expression expression, CancellationToken cancellationToken)
         {
-            return Task.FromResult(this.Execute(expression));
+            await Task.Yield();
+            return this.Execute(expression);
         }
 
         /// <summary>
@@ -126,9 +127,10 @@ namespace EntityFramework.Testing
         /// <param name="expression">The expression tree.</param>
         /// <param name="cancellationToken">The <see cref="CancellationToken"/>.</param>
         /// <returns>The result task.</returns>
-        public Task<TResult> ExecuteAsync<TResult>(Expression expression, CancellationToken cancellationToken)
+        public async Task<TResult> ExecuteAsync<TResult>(Expression expression, CancellationToken cancellationToken)
         {
-            return Task.FromResult(this.Execute<TResult>(expression));
+            await Task.Yield();
+            return this.Execute<TResult>(expression);
         }
 #endif
         /// <summary>

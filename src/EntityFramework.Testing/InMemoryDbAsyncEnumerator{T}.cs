@@ -59,9 +59,10 @@ namespace EntityFramework.Testing
         /// </summary>
         /// <param name="cancellationToken">The <see cref="CancellationToken"/>.</param>
         /// <returns>The result task.</returns>
-        public Task<bool> MoveNextAsync(CancellationToken cancellationToken)
+        public async Task<bool> MoveNextAsync(CancellationToken cancellationToken)
         {
-            return Task.FromResult(this.enumerator.MoveNext());
+            await Task.Yield();
+            return this.enumerator.MoveNext();
         }
 
         /// <summary>
