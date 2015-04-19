@@ -1,0 +1,25 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>EntityFrameworkTesting.FakeItEasy.Ninject</id>
+    <version>1.1.2</version>
+    <title>EntityFramework.Testing.FakeItEasy.Ninject</title>
+    <authors>Scott Xu</authors>
+    <owners>scott xu</owners>
+    <licenseUrl>https://github.com/scott-xu/EntityFramework.Testing/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/scott-xu/EntityFramework.Testing</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Testing helpers for using Ninject.MockingKernel.FakeItEasy with EntityFramework.</description>
+    <copyright>Copyright 2015 Scott Xu</copyright>
+    <tags>EntityFramework Entity Framework EF EF6 Testing Ninject Mocking FakeItEasy</tags>
+    <dependencies>
+      <dependency id="EntityFrameworkTesting.FakeItEasy" version="[1.1.2,2.0.0)" />
+      <dependency id="EntityFrameworkTesting.Ninject" version="[1.1.2,2.0.0)" />
+      <dependency id="Ninject.MockingKernel.FakeItEasy" version="[3.2.2,4.0.0)" />
+      <dependency id="FakeItEasy" version="[1.25.2,2.0.0)" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\**\EntityFramework.Testing.FakeItEasy.Ninject.*" target="lib" exclude="**\*.config;**\*.CodeAnalysisLog.xml;**\*.lastcodeanalysissucceeded" />
+  </files>
+</package>
