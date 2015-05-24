@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>EntityFrameworkTesting.NSubstitute</id>
-    <version>1.1.2</version>
+    <version>1.1.4</version>
     <title>EntityFramework.Testing.NSubstitute</title>
     <authors>Microsoft Open Technologies, Inc; Rowan Miller; Scott Xu; Justin Yoo</authors>
     <owners>scott xu</owners>
@@ -13,7 +13,7 @@
     <copyright>Copyright 2014-2015 Microsoft Open Technologies, Inc; Rowan Miller; Scott Xu; Justin Yoo</copyright>
     <tags>EntityFramework Entity Framework EF EF6 Testing NSubstitute</tags>
     <dependencies>
-      <dependency id="EntityFrameworkTesting" version="[1.1.2,2.0.0)" />
+      <dependency id="EntityFrameworkTesting" version="[1.1.4,2.0.0)" />
       <dependency id="NSubstitute" version="[1.8.1,2.0.0)" />
     </dependencies>
   </metadata>

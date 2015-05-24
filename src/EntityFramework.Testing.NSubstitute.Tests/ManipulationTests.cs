@@ -4,15 +4,18 @@
 // </copyright>
 //-----------------------------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using NSubstitute;
-using Xunit;
-
 namespace EntityFramework.Testing.NSubstitute.Tests
 {
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+#if !NET40
+    using System.Threading.Tasks;
+#endif
+    using global::NSubstitute;
+    using Xunit;
+
     [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Allowed test class to be left without being documented.")]
     public class ManipulationTests
     {
@@ -76,6 +79,41 @@ namespace EntityFramework.Testing.NSubstitute.Tests
 
             Assert.Equal(3, result.Count);
         }
+
+        [Fact]
+        public void Can_toList_twice()
+        {
+            var set = this.GetSubstituteDbSet()
+                .SetupData(new List<Blog> { new Blog() });
+
+            var result = set.ToList();
+
+            var result2 = set.ToList();
+
+            Assert.Equal(1, result2.Count);
+        }
+
+#if !NET40
+        [Fact]
+        public async Task Can_find_set_async()
+        {
+            var data = new List<Blog>
+            {
+                new Blog { BlogId = 1 },
+                new Blog { BlogId = 2 },
+                new Blog { BlogId = 3}
+            };
+
+            var set = this.GetSubstituteDbSet()
+                .SetupData(data, objs => data.FirstOrDefault(b => b.BlogId == (int)objs.First()));
+
+            var result = await set
+                .FindAsync(1);
+
+            Assert.NotNull(result);
+            Assert.Equal(1, result.BlogId);
+        }
+#endif
 
         private DbSet<Blog> GetSubstituteDbSet()
         {

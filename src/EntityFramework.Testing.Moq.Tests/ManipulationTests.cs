@@ -1,14 +1,16 @@
-﻿using Moq;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace EntityFramework.Testing.Moq.Tests
+﻿namespace EntityFramework.Testing.Moq.Tests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Text;
+#if !NET40
+    using System.Threading.Tasks;
+#endif
+    using global::Moq;
+    using Xunit;
+
     public class ManipulationTests
     {
         [Fact]
@@ -88,6 +90,28 @@ namespace EntityFramework.Testing.Moq.Tests
 
             Assert.Equal(1, result2.Count);
         }
+
+#if !NET40
+        [Fact]
+        public async Task Can_find_set_async()
+        {
+            var data = new List<Blog>
+            {
+                new Blog { BlogId = 1 },
+                new Blog { BlogId = 2 },
+                new Blog { BlogId = 3}
+            };
+
+            var set = new Mock<DbSet<Blog>>()
+                .SetupData(data, objs => data.FirstOrDefault(b => b.BlogId == (int)objs.First()));
+
+            var result = await set.Object
+                .FindAsync(1);
+
+            Assert.NotNull(result);
+            Assert.Equal(1, result.BlogId);
+        }
+#endif
 
         public class Blog
         {

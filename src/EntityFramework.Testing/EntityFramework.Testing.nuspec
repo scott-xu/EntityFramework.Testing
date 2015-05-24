@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>EntityFrameworkTesting</id>
-    <version>1.1.3</version>
+    <version>1.1.4</version>
     <title>EntityFramework.Testing</title>
     <authors>Microsoft Open Technologies, Inc</authors>
     <owners>scott xu</owners>

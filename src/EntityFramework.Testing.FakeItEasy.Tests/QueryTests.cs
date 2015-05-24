@@ -19,7 +19,7 @@ namespace EntityFramework.Testing.FakeItEasy.Tests
                 .SetupData(data);
 
             var count = 0;
-            foreach (var item in set)                            
+            foreach (var item in set)
             {
                 count++;
             }
@@ -72,9 +72,9 @@ namespace EntityFramework.Testing.FakeItEasy.Tests
         [Fact]
         public void Can_use_linq_opeartors()
         {
-            var data = new List<Blog> 
-            { 
-                new Blog { BlogId = 1 }, 
+            var data = new List<Blog>
+            {
+                new Blog { BlogId = 1 },
                 new Blog { BlogId = 2 },
                 new Blog { BlogId = 3}
             };
@@ -96,9 +96,9 @@ namespace EntityFramework.Testing.FakeItEasy.Tests
         [Fact]
         public async Task Can_use_linq_opeartors_async()
         {
-            var data = new List<Blog> 
-            { 
-                new Blog { BlogId = 1 }, 
+            var data = new List<Blog>
+            {
+                new Blog { BlogId = 1 },
                 new Blog { BlogId = 2 },
                 new Blog { BlogId = 3}
             };

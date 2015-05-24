@@ -11,6 +11,10 @@ namespace FakeItEasy
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
+#if !NET40
+    using System.Threading;
+    using System.Threading.Tasks;
+#endif
     using EntityFramework.Testing;
 
     /// <summary>
@@ -43,6 +47,11 @@ namespace FakeItEasy
 #endif
             A.CallTo(() => dbSet.Include(A<string>._)).Returns(dbSet);
             A.CallTo(() => dbSet.Find(A<object[]>._)).ReturnsLazily<TEntity, object[]>(objs => find(objs));
+
+#if !NET40
+            A.CallTo(() => dbSet.FindAsync(A<object[]>._)).ReturnsLazily<Task<TEntity>, object[]>(objs => Task.Run(() => find(objs)));
+            A.CallTo(() => dbSet.FindAsync(A<CancellationToken>._, A<object[]>._)).ReturnsLazily<Task<TEntity>, CancellationToken, object[]>((token, objs) => Task.Run(() => find(objs), token));
+#endif
 
             A.CallTo(() => dbSet.Remove(A<TEntity>._)).ReturnsLazily<TEntity, TEntity>(entity =>
             {
