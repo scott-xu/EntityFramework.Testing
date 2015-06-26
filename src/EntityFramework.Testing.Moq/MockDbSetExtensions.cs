@@ -54,13 +54,16 @@ namespace Moq
             mock.Setup(m => m.FindAsync(It.IsAny<CancellationToken>(), It.IsAny<object[]>())).Returns<CancellationToken, object[]>((tocken, objs) => Task.Run(() => find(objs), tocken));
 #endif
 
-            mock.Setup(m => m.Remove(It.IsAny<TEntity>())).Callback<TEntity>(entity =>
+            mock.Setup(m => m.Remove(It.IsAny<TEntity>()))
+                .Callback<TEntity>(entity =>
             {
                 data.Remove(entity);
                 mock.SetupData(data, find);
-            });
+                })
+                .Returns<TEntity>(entity => entity);
 
-            mock.Setup(m => m.RemoveRange(It.IsAny<IEnumerable<TEntity>>())).Callback<IEnumerable<TEntity>>(entities =>
+            mock.Setup(m => m.RemoveRange(It.IsAny<IEnumerable<TEntity>>()))
+                .Callback<IEnumerable<TEntity>>(entities =>
             {
                 foreach (var entity in entities)
                 {
@@ -68,15 +71,19 @@ namespace Moq
                 }
 
                 mock.SetupData(data, find);
-            });
+                })
+                .Returns<IEnumerable<TEntity>>(entities => entities);
 
-            mock.Setup(m => m.Add(It.IsAny<TEntity>())).Callback<TEntity>(entity =>
+            mock.Setup(m => m.Add(It.IsAny<TEntity>()))
+                .Callback<TEntity>(entity =>
             {
                 data.Add(entity);
                 mock.SetupData(data, find);
-            });
+                })
+                .Returns<TEntity>(entity => entity);
 
-            mock.Setup(m => m.AddRange(It.IsAny<IEnumerable<TEntity>>())).Callback<IEnumerable<TEntity>>(entities =>
+            mock.Setup(m => m.AddRange(It.IsAny<IEnumerable<TEntity>>()))
+                .Callback<IEnumerable<TEntity>>(entities =>
             {
                 foreach (var entity in entities)
                 {
@@ -84,7 +91,8 @@ namespace Moq
                 };
 
                 mock.SetupData(data, find);
-            });
+                })
+                .Returns<IEnumerable<TEntity>>(entities => entities);
 
             return mock;
         }

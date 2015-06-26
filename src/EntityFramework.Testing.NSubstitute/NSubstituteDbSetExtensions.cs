@@ -57,7 +57,7 @@ namespace NSubstitute
             dbSet.FindAsync(Arg.Any<CancellationToken>(), Arg.Any<object[]>()).Returns(new Func<CallInfo, Task<TEntity>>(info => Task.Run(() => find(info.Arg<object[]>()), info.Arg<CancellationToken>())));
 #endif
 
-            dbSet.Remove(Arg.Do<TEntity>(entity => data.Remove(entity)));
+            dbSet.Remove(Arg.Do<TEntity>(entity => data.Remove(entity))).Returns(args => args[0]);
 
             dbSet.RemoveRange(Arg.Do<IEnumerable<TEntity>>(entities =>
             {
@@ -65,9 +65,9 @@ namespace NSubstitute
                 {
                     data.Remove(entity);
                 }
-            }));
+            })).Returns(args => args[0]);
 
-            dbSet.Add(Arg.Do<TEntity>(data.Add));
+            dbSet.Add(Arg.Do<TEntity>(data.Add)).Returns(args => args[0]);
 
             dbSet.AddRange(Arg.Do<IEnumerable<TEntity>>(entities =>
             {
@@ -75,7 +75,7 @@ namespace NSubstitute
                 {
                     data.Add(entity);
                 }
-            }));
+            })).Returns(args => args[0]);
 
             return dbSet;
         }

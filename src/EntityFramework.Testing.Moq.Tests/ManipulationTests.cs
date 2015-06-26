@@ -30,6 +30,21 @@
         }
 
         [Fact]
+        public void Can_return_entity_from_remove_set()
+        {
+            var blog = new Blog();
+            var data = new List<Blog> { blog };
+
+            var set = new Mock<DbSet<Blog>>()
+                .SetupData(data);
+
+            var result = set.Object.Remove(blog);
+
+            Assert.NotNull(result);
+            Assert.Equal(blog, result);
+        }
+
+        [Fact]
         public void Can_removeRange_sets()
         {
             var blog = new Blog();
@@ -45,6 +60,23 @@
             var result = set.Object.ToList();
 
             Assert.Equal(1, result.Count);
+        }
+
+        [Fact]
+        public void Can_return_entities_from_removeRange_sets()
+        {
+            var blog = new Blog();
+            var blog2 = new Blog();
+            var range = new List<Blog> { blog, blog2 };
+            var data = new List<Blog> { blog, blog2, new Blog() };
+
+            var set = new Mock<DbSet<Blog>>()
+                .SetupData(data);
+
+            var result = set.Object.RemoveRange(range);
+
+            Assert.NotNull(result);
+            Assert.Equal(range, result);
         }
 
         [Fact]
@@ -64,6 +96,21 @@
         }
 
         [Fact]
+        public void Can_return_entity_from_add_set()
+        {
+            var blog = new Blog();
+            var data = new List<Blog> { };
+
+            var set = new Mock<DbSet<Blog>>()
+                .SetupData(data);
+
+            var result = set.Object.Add(blog);
+
+            Assert.NotNull(result);
+            Assert.Equal(blog, result);
+        }
+
+        [Fact]
         public void Can_addRange_sets()
         {
             var data = new List<Blog> { new Blog(), new Blog() };
@@ -76,6 +123,22 @@
             var result = set.Object.ToList();
 
             Assert.Equal(3, result.Count);
+        }
+
+        [Fact]
+        public void Can_return_entities_from_addRange_sets()
+        {
+            var blog = new Blog();
+            var blog2 = new Blog();
+            var range = new List<Blog> { blog, blog2 };
+
+            var set = new Mock<DbSet<Blog>>()
+                .SetupData();
+
+            var result = set.Object.AddRange(range);
+
+            Assert.NotNull(result);
+            Assert.Equal(range, result);
         }
 
         [Fact]
