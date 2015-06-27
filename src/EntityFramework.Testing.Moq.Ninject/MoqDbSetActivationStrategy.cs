@@ -30,7 +30,7 @@ namespace EntityFramework.Testing.Moq.Ninject
         protected override void ActivateDbSet(IContext context, InstanceReference reference)
         {
             dynamic mock = this.getMethod.MakeGenericMethod(new[] { context.Request.Service }).Invoke(null, new[] { reference.Instance });
-            MockDbSetExtensions.SetupData(mock);
+            MoqDbSetExtensions.SetupData(mock);
         }
     }
 }
