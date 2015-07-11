@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>EntityFrameworkTesting.Moq</id>
-    <version>1.1.4</version>
+    <version>1.1.5</version>
     <title>EntityFramework.Testing.Moq</title>
     <authors>Microsoft Open Technologies, Inc; Rowan Miller; Scott Xu</authors>
     <owners>scott xu</owners>
