@@ -176,6 +176,28 @@
         }
 #endif
 
+        [Fact]
+        public void Can_create_entity()
+        {
+            var set = new Mock<DbSet<Blog>>()
+                .SetupData();
+
+            Assert.IsType<Blog>(set.Object.Create());
+        }
+
+        [Fact]
+        public void Can_create_generic_entity()
+        {
+            var set = new Mock<DbSet<Blog>>()
+                .SetupData();
+
+            Assert.IsType<FeaturedBlog>(set.Object.Create<FeaturedBlog>());
+        }
+
+        public class FeaturedBlog : Blog
+        {
+        }
+
         public class Blog
         {
             public int BlogId { get; set; }

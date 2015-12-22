@@ -170,6 +170,24 @@
             Assert.Equal(1, result.BlogId);
         }
 #endif
+        [Fact]
+        public void Can_create_entity()
+        {
+            var set = this.GetFakeDbSet()
+                .SetupData();
+
+            Assert.IsType<Blog>(set.Create());
+        }
+
+        [Fact]
+        public void Can_create_generic_entity()
+        {
+            var set = this.GetFakeDbSet()
+                .SetupData();
+
+            Assert.IsType<FeaturedBlog>(set.Create<FeaturedBlog>());
+        }
+
 
         private DbSet<Blog> GetFakeDbSet()
         {
@@ -178,6 +196,10 @@
 #else
             return A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)).Implements(typeof(IDbAsyncEnumerable<Blog>)));
 #endif
+        }
+
+        public class FeaturedBlog : Blog
+        {
         }
 
         public class Blog

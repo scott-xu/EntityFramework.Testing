@@ -46,9 +46,9 @@ namespace Moq
 #if !NET40
             mock.As<IDbAsyncEnumerable<TEntity>>().Setup(m => m.GetAsyncEnumerator()).Returns(query.GetAsyncEnumerator);
 #endif
+            mock.Setup(m => m.Create()).Returns(query.Create);
             mock.Setup(m => m.Include(It.IsAny<string>())).Returns(mock.Object);
             mock.Setup(m => m.Find(It.IsAny<object[]>())).Returns<object[]>(find);
-
 #if !NET40
             mock.Setup(m => m.FindAsync(It.IsAny<object[]>())).Returns<object[]>(objs => Task.Run(() => find(objs)));
             mock.Setup(m => m.FindAsync(It.IsAny<CancellationToken>(), It.IsAny<object[]>())).Returns<CancellationToken, object[]>((tocken, objs) => Task.Run(() => find(objs), tocken));

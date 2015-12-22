@@ -174,6 +174,24 @@ namespace EntityFramework.Testing.NSubstitute.Tests
         }
 #endif
 
+        [Fact]
+        public void Can_create_entity()
+        {
+            var set = this.GetSubstituteDbSet()
+                .SetupData();
+
+            Assert.IsType<Blog>(set.Create());
+        }
+
+        [Fact]
+        public void Can_create_generic_entity()
+        {
+            var set = this.GetSubstituteDbSet()
+                .SetupData();
+
+            Assert.IsType<FeaturedBlog>(set.Create<FeaturedBlog>());
+        }
+
         private DbSet<Blog> GetSubstituteDbSet()
         {
 #if NET40
@@ -181,6 +199,10 @@ namespace EntityFramework.Testing.NSubstitute.Tests
 #else
             return Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>();
 #endif
+        }
+
+        public class FeaturedBlog : Blog
+        {
         }
 
         public class Blog
