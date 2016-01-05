@@ -157,7 +157,7 @@
             {
                 new Blog { BlogId = 1 },
                 new Blog { BlogId = 2 },
-                new Blog { BlogId = 3}
+                new Blog { BlogId = 3 }
             };
 
             var set = this.GetFakeDbSet()
@@ -180,14 +180,30 @@
         }
 
         [Fact]
-        public void Can_create_generic_entity()
+        public void Can_specify_include()
         {
             var set = this.GetFakeDbSet()
-                .SetupData();
+                .SetupData(new List<Blog> { new Blog() });
 
-            Assert.IsType<FeaturedBlog>(set.Create<FeaturedBlog>());
+            var result = set
+                .Include(b => b.Posts)
+                .ToList();
+
+            Assert.Equal(1, result.Count);
         }
 
+        [Fact]
+        public void Can_specify_asNoTracking()
+        {
+            var set = this.GetFakeDbSet()
+                .SetupData(new List<Blog> { new Blog() });
+
+            var result = set
+                .AsNoTracking()
+                .ToList();
+
+            Assert.Equal(1, result.Count);
+        }
 
         private DbSet<Blog> GetFakeDbSet()
         {

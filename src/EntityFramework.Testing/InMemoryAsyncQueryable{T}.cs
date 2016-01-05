@@ -101,17 +101,6 @@ namespace EntityFramework.Testing
         }
 
         /// <summary>
-        /// Creates a new instance of an entity for the type of this set or for a type derived from the type of this set.
-        /// Note that this instance is NOT added or attached to the set.
-        /// </summary>
-        /// <typeparam name="TDerivedEntity">The type of entity to create.</typeparam>
-        /// <returns>The entity instance.</returns>
-        public TDerivedEntity Create<TDerivedEntity>()
-        {
-            return Activator.CreateInstance<TDerivedEntity>();
-        }
-
-        /// <summary>
         /// Include navigation properties.
         /// </summary>
         /// <param name="path">The property path.</param>

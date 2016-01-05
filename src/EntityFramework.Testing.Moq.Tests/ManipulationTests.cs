@@ -162,7 +162,7 @@
             {
                 new Blog { BlogId = 1 },
                 new Blog { BlogId = 2 },
-                new Blog { BlogId = 3}
+                new Blog { BlogId = 3 }
             };
 
             var set = new Mock<DbSet<Blog>>()
@@ -186,12 +186,29 @@
         }
 
         [Fact]
-        public void Can_create_generic_entity()
+        public void Can_specify_include()
         {
             var set = new Mock<DbSet<Blog>>()
-                .SetupData();
+                .SetupData(new List<Blog> { new Blog() });
 
-            Assert.IsType<FeaturedBlog>(set.Object.Create<FeaturedBlog>());
+            var result = set.Object
+                .Include(b => b.Posts)
+                .ToList();
+
+            Assert.Equal(1, result.Count);
+        }
+
+        [Fact]
+        public void Can_specify_asNoTracking()
+        {
+            var set = new Mock<DbSet<Blog>>()
+                .SetupData(new List<Blog> { new Blog() });
+
+            var result = set.Object
+                .AsNoTracking()
+                .ToList();
+
+            Assert.Equal(1, result.Count);
         }
 
         public class FeaturedBlog : Blog
