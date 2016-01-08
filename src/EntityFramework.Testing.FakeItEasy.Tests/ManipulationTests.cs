@@ -180,6 +180,40 @@
         }
 
         [Fact]
+        public void Can_specify_create()
+        {
+            var expected = new Blog();
+
+            var set = this.GetFakeDbSet()
+                .SetupData()
+                .SetupCreate<Blog>(() => expected);
+
+            Assert.Equal<Blog>(expected, set.Create());
+        }
+
+        [Fact]
+        public void Can_create_generic_entity()
+        {
+            var set = this.GetFakeDbSet()
+                .SetupData()
+                .SetupCreate<Blog, FeaturedBlog>();
+
+            Assert.IsType<FeaturedBlog>(set.Create<FeaturedBlog>());
+        }
+
+        [Fact]
+        public void Can_specify_generic_create()
+        {
+            var expected = new FeaturedBlog();
+
+            var set = this.GetFakeDbSet()
+                .SetupData()
+                .SetupCreate<Blog, FeaturedBlog>(() => expected);
+
+            Assert.Equal<Blog>(expected, set.Create<FeaturedBlog>());
+        }
+
+        [Fact]
         public void Can_specify_include()
         {
             var set = this.GetFakeDbSet()

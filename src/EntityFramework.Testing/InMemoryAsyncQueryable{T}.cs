@@ -73,6 +73,25 @@ namespace EntityFramework.Testing
         }
 
         /// <summary>
+        /// Creates a new instance of an entity for the type of this set.
+        /// </summary>
+        /// <returns>The entity instance.</returns>
+        public static T Create()
+        {
+            return Activator.CreateInstance<T>();
+        }
+
+        /// <summary>
+        /// Creates a new instance of an entity for the type of this set or for a type derived from the type of this set.    
+        /// </summary>    
+        /// <typeparam name="TDerivedEntity">The type of entity to create.</typeparam>    
+        /// <returns>The entity instance.</returns>    
+        public static TDerivedEntity Create<TDerivedEntity>()
+        {
+            return Activator.CreateInstance<TDerivedEntity>();
+        }
+
+        /// <summary>
         /// Returns an enumerator that iterates through the collection.
         /// </summary>
         /// <returns>A <see cref="IEnumerator{T}"/> that can be used to iterate through the collection.</returns>
@@ -88,16 +107,6 @@ namespace EntityFramework.Testing
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this.GetEnumerator();
-        }
-
-        /// <summary>
-        /// Creates a new instance of an entity for the type of this set.
-        /// Note that this instance is NOT added or attached to the set.
-        /// </summary>
-        /// <returns>The entity instance.</returns>
-        public T Create()
-        {
-            return Activator.CreateInstance<T>();
         }
 
         /// <summary>

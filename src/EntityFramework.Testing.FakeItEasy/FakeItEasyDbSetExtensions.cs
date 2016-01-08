@@ -46,7 +46,7 @@ namespace FakeItEasy
             A.CallTo(() => ((IDbAsyncEnumerable<TEntity>)dbSet).GetAsyncEnumerator()).ReturnsLazily(info => query.GetAsyncEnumerator());
 #endif
             A.CallTo(() => dbSet.AsNoTracking()).Returns(dbSet);
-            A.CallTo(() => dbSet.Create()).ReturnsLazily(info => query.Create());
+            SetupCreate(dbSet);
             A.CallTo(() => dbSet.Include(A<string>._)).Returns(dbSet);
             A.CallTo(() => dbSet.Find(A<object[]>._)).ReturnsLazily<TEntity, object[]>(objs => find(objs));
 
@@ -87,6 +87,36 @@ namespace FakeItEasy
                 return entities;
             });
 
+            return dbSet;
+        }
+
+        /// <summary>
+        /// Sets up the Create function on the <see cref="Mock{T}"/>.
+        /// </summary>    
+        /// <param name="mock">The <see cref="Mock{T}"/>.</param>
+        /// <param name="create">The create action.</param>
+        /// <returns>The updated <see cref="Mock{T}"/>.</returns>
+        public static DbSet<TEntity> SetupCreate<TEntity>(this DbSet<TEntity> dbSet, Func<TEntity> create = null)
+             where TEntity : class
+        {
+            create = create ?? InMemoryAsyncQueryable<TEntity>.Create;
+            A.CallTo(() => dbSet.Create()).ReturnsLazily(info => create());
+            return dbSet;
+        }
+
+        /// <summary>
+        /// Sets up the generic Create function on the <see cref="Mock{T}"/>.
+        /// </summary>    
+        /// <typeparam name="TDerivedEntity">The type of entity to create.</typeparam>    
+        /// <param name="mock">The <see cref="Mock{T}"/>.</param>
+        /// <param name="create">The create action.</param>
+        /// <returns>The updated <see cref="Mock{T}"/>.</returns>
+        public static DbSet<TEntity> SetupCreate<TEntity, TDerivedEntity>(this DbSet<TEntity> dbSet, Func<TDerivedEntity> create = null)
+            where TEntity : class
+            where TDerivedEntity : class, TEntity
+        {
+            create = create ?? InMemoryAsyncQueryable<TEntity>.Create<TDerivedEntity>;
+            A.CallTo(() => dbSet.Create<TDerivedEntity>()).ReturnsLazily(info => create());
             return dbSet;
         }
     }

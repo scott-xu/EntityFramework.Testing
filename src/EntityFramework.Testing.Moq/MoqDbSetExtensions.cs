@@ -47,7 +47,7 @@ namespace Moq
             mock.As<IDbAsyncEnumerable<TEntity>>().Setup(m => m.GetAsyncEnumerator()).Returns(query.GetAsyncEnumerator);
 #endif
             mock.Setup(m => m.AsNoTracking()).Returns(mock.Object);
-            mock.Setup(m => m.Create()).Returns(query.Create);
+            SetupCreate(mock);
             mock.Setup(m => m.Include(It.IsAny<string>())).Returns(mock.Object);
             mock.Setup(m => m.Find(It.IsAny<object[]>())).Returns<object[]>(find);
 #if !NET40
@@ -95,6 +95,36 @@ namespace Moq
                 })
                 .Returns<IEnumerable<TEntity>>(entities => entities);
 
+            return mock;
+        }
+
+        /// <summary>
+        /// Sets up the Create function on the <see cref="Mock{T}"/>.
+        /// </summary>    
+        /// <param name="mock">The <see cref="Mock{T}"/>.</param>
+        /// <param name="create">The create action.</param>
+        /// <returns>The updated <see cref="Mock{T}"/>.</returns>
+        public static Mock<DbSet<TEntity>> SetupCreate<TEntity>(this Mock<DbSet<TEntity>> mock, Func<TEntity> create = null)
+             where TEntity : class
+        {
+            create = create ?? InMemoryAsyncQueryable<TEntity>.Create;
+            mock.Setup(m => m.Create()).Returns(create);
+            return mock;
+        }
+
+        /// <summary>
+        /// Sets up the generic Create function on the <see cref="Mock{T}"/>.
+        /// </summary>    
+        /// <typeparam name="TDerivedEntity">The type of entity to create.</typeparam>    
+        /// <param name="mock">The <see cref="Mock{T}"/>.</param>
+        /// <param name="create">The create action.</param>
+        /// <returns>The updated <see cref="Mock{T}"/>.</returns>
+        public static Mock<DbSet<TEntity>> SetupCreate<TEntity, TDerivedEntity>(this Mock<DbSet<TEntity>> mock, Func<TDerivedEntity> create = null)
+            where TEntity : class
+            where TDerivedEntity : class, TEntity
+        {
+            create = create ?? InMemoryAsyncQueryable<TEntity>.Create<TDerivedEntity>;
+            mock.Setup(m => m.Create<TDerivedEntity>()).Returns(create);
             return mock;
         }
     }

@@ -186,6 +186,40 @@
         }
 
         [Fact]
+        public void Can_specify_create()
+        {
+            var expected = new Blog();
+
+            var set = new Mock<DbSet<Blog>>()
+                .SetupData()
+                .SetupCreate<Blog>(() => expected);
+
+            Assert.Equal<Blog>(expected, set.Object.Create());
+        }
+
+        [Fact]
+        public void Can_create_generic_entity()
+        {
+            var set = new Mock<DbSet<Blog>>()
+               .SetupData()
+               .SetupCreate<Blog, FeaturedBlog>();
+
+            Assert.IsType<FeaturedBlog>(set.Object.Create<FeaturedBlog>());
+        }
+
+        [Fact]
+        public void Can_specify_generic_create()
+        {
+            var expected = new FeaturedBlog();
+
+            var set = new Mock<DbSet<Blog>>()
+                .SetupData()
+                .SetupCreate<Blog, FeaturedBlog>(() => expected);
+
+            Assert.Equal<Blog>(expected, set.Object.Create<FeaturedBlog>());
+        }
+
+        [Fact]
         public void Can_specify_include()
         {
             var set = new Mock<DbSet<Blog>>()
