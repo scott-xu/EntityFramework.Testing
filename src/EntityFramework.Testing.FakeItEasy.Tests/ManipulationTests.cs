@@ -157,7 +157,7 @@
             {
                 new Blog { BlogId = 1 },
                 new Blog { BlogId = 2 },
-                new Blog { BlogId = 3}
+                new Blog { BlogId = 3 }
             };
 
             var set = this.GetFakeDbSet()
@@ -170,6 +170,74 @@
             Assert.Equal(1, result.BlogId);
         }
 #endif
+        [Fact]
+        public void Can_create_entity()
+        {
+            var set = this.GetFakeDbSet()
+                .SetupData();
+
+            Assert.IsType<Blog>(set.Create());
+        }
+
+        [Fact]
+        public void Can_specify_create()
+        {
+            var expected = new Blog();
+
+            var set = this.GetFakeDbSet()
+                .SetupData()
+                .SetupCreate<Blog>(() => expected);
+
+            Assert.Equal<Blog>(expected, set.Create());
+        }
+
+        [Fact]
+        public void Can_create_generic_entity()
+        {
+            var set = this.GetFakeDbSet()
+                .SetupData()
+                .SetupCreate<Blog, FeaturedBlog>();
+
+            Assert.IsType<FeaturedBlog>(set.Create<FeaturedBlog>());
+        }
+
+        [Fact]
+        public void Can_specify_generic_create()
+        {
+            var expected = new FeaturedBlog();
+
+            var set = this.GetFakeDbSet()
+                .SetupData()
+                .SetupCreate<Blog, FeaturedBlog>(() => expected);
+
+            Assert.Equal<Blog>(expected, set.Create<FeaturedBlog>());
+        }
+
+        [Fact]
+        public void Can_specify_include()
+        {
+            var set = this.GetFakeDbSet()
+                .SetupData(new List<Blog> { new Blog() });
+
+            var result = set
+                .Include(b => b.Posts)
+                .ToList();
+
+            Assert.Equal(1, result.Count);
+        }
+
+        [Fact]
+        public void Can_specify_asNoTracking()
+        {
+            var set = this.GetFakeDbSet()
+                .SetupData(new List<Blog> { new Blog() });
+
+            var result = set
+                .AsNoTracking()
+                .ToList();
+
+            Assert.Equal(1, result.Count);
+        }
 
         private DbSet<Blog> GetFakeDbSet()
         {
@@ -178,6 +246,10 @@
 #else
             return A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)).Implements(typeof(IDbAsyncEnumerable<Blog>)));
 #endif
+        }
+
+        public class FeaturedBlog : Blog
+        {
         }
 
         public class Blog

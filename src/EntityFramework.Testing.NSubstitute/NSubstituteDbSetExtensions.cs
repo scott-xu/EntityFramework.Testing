@@ -48,7 +48,8 @@ namespace NSubstitute
 #if !NET40
             ((IDbAsyncEnumerable<TEntity>)dbSet).GetAsyncEnumerator().Returns(info => getQuery().GetAsyncEnumerator());
 #endif
-
+            dbSet.AsNoTracking().Returns(dbSet);
+            SetupCreate(dbSet);
             dbSet.Include(Arg.Any<string>()).Returns(dbSet);
             dbSet.Find(Arg.Any<object[]>()).Returns(new Func<CallInfo, TEntity>(info => find(info.Arg<object[]>())));
 
@@ -77,6 +78,36 @@ namespace NSubstitute
                 }
             })).Returns(args => args[0]);
 
+            return dbSet;
+        }
+
+        /// <summary>
+        /// Sets up the Create function on the <see cref="Mock{T}"/>.
+        /// </summary>    
+        /// <param name="mock">The <see cref="Mock{T}"/>.</param>
+        /// <param name="create">The create action.</param>
+        /// <returns>The updated <see cref="Mock{T}"/>.</returns>
+        public static DbSet<TEntity> SetupCreate<TEntity>(this DbSet<TEntity> dbSet, Func<TEntity> create = null)
+             where TEntity : class
+        {
+            create = create ?? InMemoryAsyncQueryable<TEntity>.Create;
+            dbSet.Create().Returns(info => create());
+            return dbSet;
+        }
+
+        /// <summary>
+        /// Sets up the generic Create function on the <see cref="Mock{T}"/>.
+        /// </summary>    
+        /// <typeparam name="TDerivedEntity">The type of entity to create.</typeparam>    
+        /// <param name="mock">The <see cref="Mock{T}"/>.</param>
+        /// <param name="create">The create action.</param>
+        /// <returns>The updated <see cref="Mock{T}"/>.</returns>
+        public static DbSet<TEntity> SetupCreate<TEntity, TDerivedEntity>(this DbSet<TEntity> dbSet, Func<TDerivedEntity> create = null)
+            where TEntity : class
+            where TDerivedEntity : class, TEntity
+        {
+            create = create ?? InMemoryAsyncQueryable<TEntity>.Create<TDerivedEntity>;
+            dbSet.Create<TDerivedEntity>().Returns(info => create());
             return dbSet;
         }
     }
