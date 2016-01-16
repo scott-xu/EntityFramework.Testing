@@ -77,6 +77,22 @@
         }
 
         [Fact]
+        public void Can_attach_set()
+        {
+            var blog = new Blog();
+            var data = new List<Blog> { };
+
+            var set = this.GetFakeDbSet()
+                .SetupData(data);
+
+            set.Attach(blog);
+
+            var result = set.ToList();
+
+            Assert.Equal(1, result.Count);
+        }
+
+        [Fact]
         public void Can_add_set()
         {
             var blog = new Blog();
@@ -182,6 +198,15 @@
                 .ToList();
 
             Assert.Equal(1, result.Count);
+        }
+
+        [Fact]
+        public void Can_create_entity()
+        {
+            var set = this.GetFakeDbSet()
+                .SetupData();
+
+            Assert.IsType<Blog>(set.Create());
         }
 
         private DbSet<Blog> GetFakeDbSet()

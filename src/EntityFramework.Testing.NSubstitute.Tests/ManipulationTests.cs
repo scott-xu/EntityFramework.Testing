@@ -97,6 +97,21 @@ namespace EntityFramework.Testing.NSubstitute.Tests
         }
 
         [Fact]
+        public void Can_attach_set()
+        {
+            var blog = new Blog();
+            var data = new List<Blog> { };
+
+            var set = this.GetSubstituteDbSet().SetupData(data);
+
+            set.Attach(blog);
+
+            var result = set.ToList();
+
+            Assert.Equal(1, result.Count);
+        }
+
+        [Fact]
         public void Can_return_entity_from_add_set()
         {
             var blog = new Blog();
@@ -185,6 +200,15 @@ namespace EntityFramework.Testing.NSubstitute.Tests
                 .ToList();
 
             Assert.Equal(1, result.Count);
+        }
+
+        [Fact]
+        public void Can_create_entity()
+        {
+            var set = this.GetSubstituteDbSet()
+                .SetupData();
+
+            Assert.IsType<Blog>(set.Create());
         }
 
         private DbSet<Blog> GetSubstituteDbSet()

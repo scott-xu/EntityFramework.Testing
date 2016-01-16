@@ -96,6 +96,22 @@
         }
 
         [Fact]
+        public void Can_attach_set()
+        {
+            var blog = new Blog();
+            var data = new List<Blog> { };
+
+            var set = new Mock<DbSet<Blog>>()
+                .SetupData(data);
+
+            set.Object.Attach(blog);
+
+            var result = set.Object.ToList();
+
+            Assert.Equal(1, result.Count);
+        }
+
+        [Fact]
         public void Can_return_entity_from_add_set()
         {
             var blog = new Blog();
@@ -187,6 +203,15 @@
                 .ToList();
 
             Assert.Equal(1, result.Count);
+        }
+
+        [Fact]
+        public void Can_create_entity()
+        {
+            var set = new Mock<DbSet<Blog>>()
+                .SetupData();
+
+            Assert.IsType<Blog>(set.Object.Create());
         }
 
         public class Blog

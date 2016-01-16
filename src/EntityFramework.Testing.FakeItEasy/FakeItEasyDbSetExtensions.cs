@@ -54,6 +54,8 @@ namespace FakeItEasy
             A.CallTo(() => dbSet.FindAsync(A<CancellationToken>._, A<object[]>._)).ReturnsLazily<Task<TEntity>, CancellationToken, object[]>((token, objs) => Task.Run(() => find(objs), token));
 #endif
 
+            A.CallTo(() => dbSet.Create()).ReturnsLazily(() => Activator.CreateInstance<TEntity>());
+
             A.CallTo(() => dbSet.Remove(A<TEntity>._)).ReturnsLazily<TEntity, TEntity>(entity =>
             {
                 data.Remove(entity);
@@ -71,6 +73,12 @@ namespace FakeItEasy
             });
 
             A.CallTo(() => dbSet.Add(A<TEntity>._)).ReturnsLazily<TEntity, TEntity>(entity =>
+            {
+                data.Add(entity);
+                return entity;
+            });
+
+            A.CallTo(() => dbSet.Attach(A<TEntity>._)).ReturnsLazily<TEntity, TEntity>(entity =>
             {
                 data.Add(entity);
                 return entity;

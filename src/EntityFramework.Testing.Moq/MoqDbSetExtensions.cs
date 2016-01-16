@@ -55,6 +55,8 @@ namespace Moq
             mock.Setup(m => m.FindAsync(It.IsAny<CancellationToken>(), It.IsAny<object[]>())).Returns<CancellationToken, object[]>((tocken, objs) => Task.Run(() => find(objs), tocken));
 #endif
 
+            mock.Setup(m => m.Create()).Returns(() => Activator.CreateInstance<TEntity>());
+
             mock.Setup(m => m.Remove(It.IsAny<TEntity>()))
                 .Callback<TEntity>(entity =>
                 {
@@ -76,6 +78,14 @@ namespace Moq
                 .Returns<IEnumerable<TEntity>>(entities => entities);
 
             mock.Setup(m => m.Add(It.IsAny<TEntity>()))
+                .Callback<TEntity>(entity =>
+                {
+                    data.Add(entity);
+                    mock.SetupData(data, find);
+                })
+                .Returns<TEntity>(entity => entity);
+
+            mock.Setup(m => m.Attach(It.IsAny<TEntity>()))
                 .Callback<TEntity>(entity =>
                 {
                     data.Add(entity);
