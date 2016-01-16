@@ -45,6 +45,7 @@ namespace FakeItEasy
 #if !NET40
             A.CallTo(() => ((IDbAsyncEnumerable<TEntity>)dbSet).GetAsyncEnumerator()).ReturnsLazily(info => query.GetAsyncEnumerator());
 #endif
+            A.CallTo(() => dbSet.AsNoTracking()).Returns(dbSet);
             A.CallTo(() => dbSet.Include(A<string>._)).Returns(dbSet);
             A.CallTo(() => dbSet.Find(A<object[]>._)).ReturnsLazily<TEntity, object[]>(objs => find(objs));
 

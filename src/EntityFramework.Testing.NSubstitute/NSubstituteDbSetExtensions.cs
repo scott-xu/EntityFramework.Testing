@@ -49,6 +49,7 @@ namespace NSubstitute
             ((IDbAsyncEnumerable<TEntity>)dbSet).GetAsyncEnumerator().Returns(info => getQuery().GetAsyncEnumerator());
 #endif
 
+            dbSet.AsNoTracking().Returns(dbSet);
             dbSet.Include(Arg.Any<string>()).Returns(dbSet);
             dbSet.Find(Arg.Any<object[]>()).Returns(new Func<CallInfo, TEntity>(info => find(info.Arg<object[]>())));
 
