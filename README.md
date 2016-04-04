@@ -2,7 +2,7 @@
 
 **EntityFramework.Testing** provides an implementation of `DbAsyncQueryProvider` that can be used when testing a component that uses async queries with EntityFramework.
 
-The project is cut from EntityFrameworks' [source code](http://entityframework.codeplex.com/SourceControl/latest#test/EntityFramework/FunctionalTests/TestDoubles/). Some changes are made to be compliance with StyleCop/CodeAnalysis
+The project is cut from EntityFrameworks' [source code](http://entityframework.codeplex.com/SourceControl/latest#test/EntityFramework/FunctionalTests/TestDoubles/). Some changes are made to be compliant with StyleCop/CodeAnalysis
 
 ## EntityFramework.Testing.Moq [![NuGet Version](http://img.shields.io/nuget/v/EntityFrameworkTesting.Moq.svg?style=flat)](https://www.nuget.org/packages/EntityFrameworkTesting.Moq/) [![NuGet Downloads](http://img.shields.io/nuget/dt/EntityFrameworkTesting.Moq.svg?style=flat)](https://www.nuget.org/packages/EntityFrameworkTesting.Moq/)
 
@@ -29,7 +29,7 @@ public class BlogsController : Controller
 }
 ```
 
-You can write a unit test against an mock context as follows. `SetupData` extension method is part of EntityFramework.Testing.Moq.
+You can write a unit test against a mock context as follows. `SetupData` extension method is part of EntityFramework.Testing.Moq.
 
 ```C#
 [TestMethod]
@@ -127,7 +127,7 @@ public class BlogsController : Controller
 }
 ```
 
-You can write a unit test against an mock context as follows. `SetupData` extension method is part of EntityFramework.Testing.NSubstitute.
+You can write a unit test against a mock context as follows. `SetupData` extension method is part of EntityFramework.Testing.NSubstitute.
 
 ```C#
 [TestMethod]
@@ -224,7 +224,7 @@ public class BlogsController : Controller
 }
 ```
 
-You can write a unit test against an mock context as follows. `SetupData` extension method is part of EntityFramework.Testing.FakeItEasy.
+You can write a unit test against a mock context as follows. `SetupData` extension method is part of EntityFramework.Testing.FakeItEasy.
 
 ```C#
 [TestMethod]
