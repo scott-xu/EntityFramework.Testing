@@ -161,6 +161,19 @@ public async Task Index_returns_blogs_ordered_by_name()
 }
 ```
 
+All the following mocked `DbSet` operations work as expected:
+
+- `Add`
+- `AddRange`
+- `AsNoTracking`
+- `Attach`
+- `Create`
+- `Find`
+- `FindAsync`
+- `Include`
+- `Remove`
+- `RemoveRange`
+
 ## EntityFramework.Testing.NSubstitute.Ninject [![NuGet Version](http://img.shields.io/nuget/v/EntityFrameworkTesting.NSubstitute.Ninject.svg?style=flat)](https://www.nuget.org/packages/EntityFrameworkTesting.NSubstitute.Ninject/) 
 
 **EntityFramework.Testing.NSubstitute.Ninject** provides a Ninject Module to auto mock `DbContext` and its `DbSet<>` properties using Ninject.MockingKernel.NSubstitute.
