@@ -16,7 +16,7 @@
       <dependency id="EntityFrameworkTesting.NSubstitute" version="[1.2.0,2.0.0)" />
       <dependency id="EntityFrameworkTesting.Ninject" version="[1.2.0,2.0.0)" />
       <dependency id="Ninject.MockingKernel.NSubstitute" version="[3.2.1,4.0.0)" />
-      <dependency id="NSubstitute" version="[1.8.1,2.0.0)" />
+      <dependency id="NSubstitute" version="[1.8.1,3.0.0)" />
     </dependencies>
   </metadata>
   <files>
