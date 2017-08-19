@@ -1,0 +1,33 @@
+version: 1.0.0.{build}
+image: Visual Studio 2017
+init:
+- cmd: git config --global core.autocrlf true
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '1.0.0.0'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+cache:
+  - packages -> **\packages.config
+build_script:
+- cmd: >-
+    nuget restore
+
+    msbuild EntityFramework.Testing.sln /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:Configuration=Release;TargetFrameworkVersion=v4.0;DefineConstants="NET40";OutPutPath=bin\Release\net40\
+    msbuild EntityFramework.Testing.sln /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:Configuration=Release;TargetFrameworkVersion=v4.5;DefineConstants="NET45";OutPutPath=bin\Release\net45\
+
+    nuget pack "src\EntityFramework.Testing\EntityFramework.Testing.csproj" -Properties Configuration=Release;OutPutPath=bin\Release\net40\
+    nuget pack "src\EntityFramework.Testing.Moq\EntityFramework.Testing.Moq.csproj" -Properties Configuration=Release;OutPutPath=bin\Release\net40\
+    nuget pack "src\EntityFramework.Testing.NSubstitute\EntityFramework.Testing.NSubstitute.csproj" -Properties  Configuration=Release;OutPutPath=bin\Release\net40\
+    nuget pack "src\EntityFramework.Testing.FakeItEasy\EntityFramework.Testing.FakeItEasy.csproj" -Properties Configuration=Release;OutPutPath=bin\Release\net40\
+    nuget pack "src\EntityFramework.Testing.Ninject\EntityFramework.Testing.Ninject.csproj" -Properties Configuration=Release;OutPutPath=bin\Release\net40\
+    nuget pack "src\EntityFramework.Testing.Moq.Ninject\EntityFramework.Testing.Moq.Ninject.csproj" -Properties Configuration=Release;OutPutPath=bin\Release\net40\
+    nuget pack "src\EntityFramework.Testing.NSubstitute.Ninject\EntityFramework.Testing.NSubstitute.Ninject.csproj" -Properties Configuration=Release;OutPutPath=bin\Release\net40\
+    nuget pack "src\EntityFramework.Testing.FakeItEasy.Ninject\EntityFramework.Testing.FakeItEasy.Ninject.csproj" -Properties Configuration=Release;OutPutPath=bin\Release\net40\
+artifacts:
+- path: '*.nupkg'
+deploy:
+- provider: NuGet
+  api_key:
+    secure: BE2IOH0bTyc3Dpm1Jazaj4lB/LOiW5J9czpUD7D32WEqZ7Rxo4nUyYE8Zana6Dhv
