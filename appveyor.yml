@@ -14,9 +14,9 @@ build_script:
 - cmd: >-
     nuget restore
 
-    msbuild EntityFramework.Testing.sln /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:Configuration=Release;TargetFrameworkVersion=v4.0;DefineConstants="NET40";OutPutPath=bin\Release\net40\
+    msbuild EntityFramework.Testing.sln /maxcpucount /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:Configuration=Release;TargetFrameworkVersion=v4.0;DefineConstants="NET40";OutPutPath=bin\Release\net40\
 
-    msbuild EntityFramework.Testing.sln /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:Configuration=Release;TargetFrameworkVersion=v4.5;DefineConstants="NET45";OutPutPath=bin\Release\net45\
+    msbuild EntityFramework.Testing.sln /maxcpucount /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:Configuration=Release;TargetFrameworkVersion=v4.5;DefineConstants="NET45";OutPutPath=bin\Release\net45\
 
     nuget pack "src\EntityFramework.Testing\EntityFramework.Testing.csproj" -Properties Configuration=Release;OutPutPath=bin\Release\net40\
 
