@@ -12,11 +12,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("EntityFramework.Testing.NSubstitute")]
-[assembly: AssemblyDescription("Testing helpers for using NSubstitute with Entity Framework")]
+[assembly: AssemblyDescription("Testing helpers for using NSubstitute with Entity Framework.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Justin Yoo")]
 [assembly: AssemblyProduct("EntityFramework.Testing.NSubstitute")]
-[assembly: AssemblyCopyright("Copyright 2014 Justin Yoo")]
+[assembly: AssemblyCopyright("Copyright © Justin Yoo")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: CLSCompliant(true)]

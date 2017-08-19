@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Scott Xu")]
 [assembly: AssemblyProduct("EntityFramework.Testing.Ninject")]
-[assembly: AssemblyCopyright("Copyright 2015 Scott Xu")]
+[assembly: AssemblyCopyright("Copyright © Scott Xu")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

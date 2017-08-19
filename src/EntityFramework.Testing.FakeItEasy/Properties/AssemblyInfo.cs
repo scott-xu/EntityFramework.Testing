@@ -11,11 +11,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("EntityFramework.Testing.FakeItEasy")]
-[assembly: AssemblyDescription("Testing helpers for using FakeItEasy with Entity Framework")]
+[assembly: AssemblyDescription("Testing helpers for using FakeItEasy with Entity Framework.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Scott Xu")]
 [assembly: AssemblyProduct("EntityFramework.Testing.FakeItEasy")]
-[assembly: AssemblyCopyright("Copyright © Scott Xu 2015")]
+[assembly: AssemblyCopyright("Copyright © Scott Xu")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

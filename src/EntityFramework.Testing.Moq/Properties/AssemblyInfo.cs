@@ -12,11 +12,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("EntityFramework.Testing.Moq")]
-[assembly: AssemblyDescription("Testing helpers for using Moq with Entity Framework")]
+[assembly: AssemblyDescription("Testing helpers for using Moq with Entity Framework.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Rowan Miller")]
+[assembly: AssemblyCompany("Rowan Miller, Scott Xu")]
 [assembly: AssemblyProduct("EntityFramework.Testing.Moq")]
-[assembly: AssemblyCopyright("Copyright © 2014")]
+[assembly: AssemblyCopyright("Copyright © Rowan Miller, Scott Xu")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: CLSCompliant(true)]
