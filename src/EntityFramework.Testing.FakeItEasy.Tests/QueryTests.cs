@@ -15,7 +15,7 @@ namespace EntityFramework.Testing.FakeItEasy.Tests
         {
             var data = new List<Blog> { new Blog { }, new Blog { } };
 
-            var set = A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)).Implements(typeof(IDbAsyncEnumerable<Blog>)))
+            var set = A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)))
                 .SetupData(data);
 
             var count = 0;
@@ -46,7 +46,7 @@ namespace EntityFramework.Testing.FakeItEasy.Tests
         {
             var data = new List<Blog> { new Blog(), new Blog() };
 
-            var set = A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)).Implements(typeof(IDbAsyncEnumerable<Blog>)))
+            var set = A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)))
                 .SetupData(data);
 
             var result = set.ToList();
@@ -79,7 +79,7 @@ namespace EntityFramework.Testing.FakeItEasy.Tests
                 new Blog { BlogId = 3}
             };
 
-            var set = A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)).Implements(typeof(IDbAsyncEnumerable<Blog>)))
+            var set = A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)))
                 .SetupData(data);
 
             var result = set
@@ -123,7 +123,7 @@ namespace EntityFramework.Testing.FakeItEasy.Tests
         {
             var data = new List<Blog> { new Blog(), new Blog() };
 
-            var set = A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)).Implements(typeof(IDbAsyncEnumerable<Blog>)))
+            var set = A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)))
                 .SetupData(data);
 
             var result = set
@@ -138,7 +138,7 @@ namespace EntityFramework.Testing.FakeItEasy.Tests
         {
             var data = new List<Blog> { new Blog(), new Blog() };
 
-            var set = A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)).Implements(typeof(IDbAsyncEnumerable<Blog>)))
+            var set = A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)))
                 .SetupData(data);
 
             var result = set
