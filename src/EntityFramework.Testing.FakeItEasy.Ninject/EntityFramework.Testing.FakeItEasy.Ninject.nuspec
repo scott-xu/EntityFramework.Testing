@@ -20,6 +20,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\**\EntityFramework.Testing.FakeItEasy.Ninject.*" target="lib" exclude="**\*.config;**\*.CodeAnalysisLog.xml;**\*.lastcodeanalysissucceeded" />
+    <file src="bin\Release\*\EntityFramework.Testing.FakeItEasy.Ninject.*" target="lib" exclude="**\*.config;**\*.CodeAnalysisLog.xml;**\*.lastcodeanalysissucceeded" />
   </files>
 </package>
