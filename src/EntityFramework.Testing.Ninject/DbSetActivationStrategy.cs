@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------------------------------------
 // <copyright file="DbSetActivationStrategy.cs" company="Scott Xu">
-//   Copyright (c) 2014 Scott Xu.
+// Copyright (c) Scott Xu. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------------------------------------
 
@@ -10,7 +10,6 @@ namespace EntityFramework.Testing.Ninject
     using System.Data.Entity;
     using global::Ninject.Activation;
     using global::Ninject.Activation.Strategies;
-    using global::Ninject.Planning.Directives;
 
     /// <summary>
     /// <see cref="DbSet{T}"/> property injection strategy.

@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------------------------------------
 // <copyright file="EntityFrameworkTestingMoqModule.cs" company="Scott Xu">
-//   Copyright (c) 2014 Scott Xu.
+// Copyright (c) Scott Xu. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------------------------------------
 

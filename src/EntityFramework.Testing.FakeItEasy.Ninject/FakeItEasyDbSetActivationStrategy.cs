@@ -1,13 +1,12 @@
 ﻿//-----------------------------------------------------------------------------------------------------
 // <copyright file="FakeItEasyDbSetActivationStrategy.cs" company="Scott Xu">
-//   Copyright (c) 2015 Scott Xu.
+// Copyright (c) Scott Xu. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------------------------------------
 
 namespace EntityFramework.Testing.FakeItEasy.Ninject
 {
     using System.Data.Entity;
-    using System.Reflection;
     using EntityFramework.Testing.Ninject;
     using global::FakeItEasy;
     using global::Ninject.Activation;

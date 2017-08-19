@@ -1,7 +1,6 @@
 ﻿//-----------------------------------------------------------------------------------------------------
-// <copyright file="MoqDbSetExtensions.cs" company="Rowan Miller">
-//   Copyright (c) 2014 Rowan Miller.
-//   Modified by Scott Xu.
+// <copyright file="MoqDbSetExtensions.cs" company="Rowan Miller, Scott Xu">
+// Copyright (c) Rowan Miller, Scott Xu. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------------------------------------
 
@@ -17,7 +16,6 @@ namespace Moq
     using System.Threading.Tasks;
 #endif
     using EntityFramework.Testing;
-    using global::Moq;
 
     /// <summary>
     /// Extension methods for <see cref="Mock{T}"/>.
@@ -32,7 +30,8 @@ namespace Moq
         /// <param name="data">The seed data.</param>
         /// <param name="find">The find action.</param>
         /// <returns>The updated <see cref="Mock{T}"/>.</returns>
-        public static Mock<DbSet<TEntity>> SetupData<TEntity>(this Mock<DbSet<TEntity>> mock, ICollection<TEntity> data = null, Func<object[], TEntity> find = null) where TEntity : class
+        public static Mock<DbSet<TEntity>> SetupData<TEntity>(this Mock<DbSet<TEntity>> mock, ICollection<TEntity> data = null, Func<object[], TEntity> find = null)
+            where TEntity : class
         {
             data = data ?? new List<TEntity>();
             find = find ?? (o => null);
@@ -99,7 +98,7 @@ namespace Moq
                     foreach (var entity in entities)
                     {
                         data.Add(entity);
-                    };
+                    }
 
                     mock.SetupData(data, find);
                 })

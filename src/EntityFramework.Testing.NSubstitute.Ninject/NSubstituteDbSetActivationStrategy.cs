@@ -1,13 +1,12 @@
 ﻿//-----------------------------------------------------------------------------------------------------
 // <copyright file="NSubstituteDbSetActivationStrategy.cs" company="Scott Xu">
-//   Copyright (c) 2014 Scott Xu.
+// Copyright (c) Scott Xu. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------------------------------------
 
 namespace EntityFramework.Testing.NSubstitute.Ninject
 {
     using System.Data.Entity;
-    using System.Reflection;
     using EntityFramework.Testing.Ninject;
     using global::Ninject.Activation;
     using global::NSubstitute;

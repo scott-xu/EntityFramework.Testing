@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------------------------------------
 // <copyright file="FakeItEasyDbSetExtensions.cs" company="Scott Xu">
-//   Copyright (c) 2015 Scott Xu.
+// Copyright (c) Scott Xu. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------------------------------------
 
@@ -30,7 +30,8 @@ namespace FakeItEasy
         /// <param name="data">The seed data.</param>
         /// <param name="find">The find action.</param>
         /// <returns>The updated <see cref="DbSet{T}"/>.</returns>
-        public static DbSet<TEntity> SetupData<TEntity>(this DbSet<TEntity> dbSet, ICollection<TEntity> data = null, Func<object[], TEntity> find = null) where TEntity : class
+        public static DbSet<TEntity> SetupData<TEntity>(this DbSet<TEntity> dbSet, ICollection<TEntity> data = null, Func<object[], TEntity> find = null)
+            where TEntity : class
         {
             data = data ?? new List<TEntity>();
             find = find ?? (o => null);

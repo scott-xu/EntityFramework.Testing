@@ -1,7 +1,6 @@
 ﻿//-----------------------------------------------------------------------------------------------------
 // <copyright file="DebugCheck.cs" company="Microsoft Open Technologies, Inc">
-//   Copyright (c) Microsoft Open Technologies, Inc. All rights reserved.
-//   Modified by Scott Xu to be compliance with StyleCop.
+// Copyright (c) Microsoft Open Technologies, Inc. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------------------------------------
 
@@ -20,7 +19,8 @@ namespace EntityFramework.Testing
         /// <typeparam name="T">The reference type. </typeparam>
         /// <param name="value">The value. </param>
         [Conditional("DEBUG")]
-        public static void NotNull<T>(T value) where T : class
+        public static void NotNull<T>(T value)
+            where T : class
         {
             Debug.Assert(value != null, "The value should not be null.");
         }

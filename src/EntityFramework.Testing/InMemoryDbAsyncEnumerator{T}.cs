@@ -1,7 +1,6 @@
 ﻿//-----------------------------------------------------------------------------------------------------
 // <copyright file="InMemoryDbAsyncEnumerator{T}.cs" company="Microsoft Open Technologies, Inc">
-//   Copyright (c) Microsoft Open Technologies, Inc. All rights reserved.
-//   Modified by Scott Xu to be compliance with StyleCop.
+// Copyright (c) Microsoft Open Technologies, Inc. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------------------------------------
 

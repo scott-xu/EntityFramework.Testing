@@ -1,6 +1,5 @@
 ﻿namespace EntityFramework.Testing.Ninject.Tests
 {
-    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
     using global::Ninject;

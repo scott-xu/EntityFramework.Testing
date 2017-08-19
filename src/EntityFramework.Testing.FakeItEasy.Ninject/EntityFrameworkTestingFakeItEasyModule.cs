@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------------------------------------
 // <copyright file="EntityFrameworkTestingFakeItEasyModule.cs" company="Scott Xu">
-//   Copyright (c) 2015 Scott Xu.
+// Copyright (c) Scott Xu. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------------------------------------
 

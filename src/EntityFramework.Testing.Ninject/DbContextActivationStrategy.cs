@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------------------------------------
 // <copyright file="DbContextActivationStrategy.cs" company="Scott Xu">
-//   Copyright (c) 2014 Scott Xu.
+// Copyright (c) Scott Xu. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------------------------------------
 
@@ -8,7 +8,6 @@ namespace EntityFramework.Testing.Ninject
 {
     using System;
     using System.Data.Entity;
-    using System.Reflection;
     using global::Ninject.Activation;
     using global::Ninject.Activation.Strategies;
 

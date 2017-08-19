@@ -1,10 +1,8 @@
 ﻿namespace EntityFramework.Testing.Moq.Tests
 {
-    using System;
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
-    using System.Text;
 #if !NET40
     using System.Threading.Tasks;
 #endif
