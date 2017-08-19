@@ -1,11 +1,11 @@
-version: 1.0.0.{build}
+version: 1.0.{build}
 image: Visual Studio 2017
 init:
 - cmd: git config --global core.autocrlf true
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
-  assembly_version: '1.0.0.0'
+  assembly_version: '1.0.0'
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
 cache:
@@ -40,3 +40,5 @@ deploy:
 - provider: NuGet
   api_key:
     secure: BE2IOH0bTyc3Dpm1Jazaj4lB/LOiW5J9czpUD7D32WEqZ7Rxo4nUyYE8Zana6Dhv
+  on:
+    appveyor_repo_tag: true
