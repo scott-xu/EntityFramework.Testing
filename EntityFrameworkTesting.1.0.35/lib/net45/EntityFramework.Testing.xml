@@ -1,0 +1,238 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EntityFramework.Testing</name>
+    </assembly>
+    <members>
+        <member name="T:EntityFramework.Testing.DebugCheck">
+            <summary>
+            Assert value in debug mode
+            </summary>
+        </member>
+        <member name="M:EntityFramework.Testing.DebugCheck.NotNull``1(``0)">
+            <summary>
+            Assert the value is not null.
+            </summary>
+            <typeparam name="T">The reference type. </typeparam>
+            <param name="value">The value. </param>
+        </member>
+        <member name="T:EntityFramework.Testing.InMemoryAsyncQueryable`1">
+            <summary>
+            Represents in-memory async query-able object.
+            </summary>
+            <typeparam name="T">The type of the content of the data source.</typeparam>
+        </member>
+        <member name="F:EntityFramework.Testing.InMemoryAsyncQueryable`1.queryable">
+            <summary>
+            The query-able object.
+            </summary>
+        </member>
+        <member name="F:EntityFramework.Testing.InMemoryAsyncQueryable`1.include">
+            <summary>
+            The Include action.
+            </summary>
+        </member>
+        <member name="M:EntityFramework.Testing.InMemoryAsyncQueryable`1.#ctor(System.Linq.IQueryable{`0},System.Action{System.String,System.Collections.IEnumerable})">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntityFramework.Testing.InMemoryAsyncQueryable`1"/> class.
+            </summary>
+            <param name="queryable">The query-able object.</param>
+            <param name="include">The Include action.</param>
+        </member>
+        <member name="P:EntityFramework.Testing.InMemoryAsyncQueryable`1.Expression">
+            <summary>
+            Gets the expression tree that is associated with the instance of <see cref="T:EntityFramework.Testing.InMemoryAsyncQueryable`1"/>.
+            </summary>
+        </member>
+        <member name="P:EntityFramework.Testing.InMemoryAsyncQueryable`1.ElementType">
+            <summary>
+            Gets the type of the element(s) that are returned when the expression tree
+            associated with this instance of <see cref="T:EntityFramework.Testing.InMemoryAsyncQueryable`1"/> is executed.
+            </summary>
+        </member>
+        <member name="P:EntityFramework.Testing.InMemoryAsyncQueryable`1.Provider">
+            <summary>
+            Gets the <see cref="T:EntityFramework.Testing.InMemoryAsyncQueryProvider"/>.
+            </summary>
+        </member>
+        <member name="M:EntityFramework.Testing.InMemoryAsyncQueryable`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:EntityFramework.Testing.InMemoryAsyncQueryable`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A <see cref="T:System.Collections.IEnumerator"/> that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:EntityFramework.Testing.InMemoryAsyncQueryable`1.Include(System.String)">
+            <summary>
+            Include navigation properties.
+            </summary>
+            <param name="path">The property path.</param>
+            <returns>The query-able object itself.</returns>
+        </member>
+        <member name="M:EntityFramework.Testing.InMemoryAsyncQueryable`1.GetAsyncEnumerator">
+            <summary>
+            Get generic DB async enumerator
+            </summary>
+            <returns>The <see cref="T:System.Data.Entity.Infrastructure.IDbAsyncEnumerator`1"/>.</returns>
+        </member>
+        <member name="M:EntityFramework.Testing.InMemoryAsyncQueryable`1.System#Data#Entity#Infrastructure#IDbAsyncEnumerable#GetAsyncEnumerator">
+            <summary>
+            Get DB async enumerator
+            </summary>
+            <returns>The <see cref="T:System.Data.Entity.Infrastructure.IDbAsyncEnumerator"/>.</returns>
+        </member>
+        <member name="T:EntityFramework.Testing.InMemoryAsyncQueryProvider">
+            <summary>
+            Represents in-memory async query provider
+            </summary>
+        </member>
+        <member name="F:EntityFramework.Testing.InMemoryAsyncQueryProvider.CreateQueryMethod">
+            <summary>
+            The method to create query.
+            </summary>
+        </member>
+        <member name="F:EntityFramework.Testing.InMemoryAsyncQueryProvider.ExecuteMethod">
+            <summary>
+            The method to execute the query.
+            </summary>
+        </member>
+        <member name="F:EntityFramework.Testing.InMemoryAsyncQueryProvider.provider">
+            <summary>
+            The query provider.
+            </summary>
+        </member>
+        <member name="F:EntityFramework.Testing.InMemoryAsyncQueryProvider.include">
+            <summary>
+            The include action.
+            </summary>
+        </member>
+        <member name="M:EntityFramework.Testing.InMemoryAsyncQueryProvider.#ctor(System.Linq.IQueryProvider,System.Action{System.String,System.Collections.IEnumerable})">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntityFramework.Testing.InMemoryAsyncQueryProvider"/> class.
+            </summary>
+            <param name="provider">The query provider.</param>
+            <param name="include">The Include action.</param>
+        </member>
+        <member name="M:EntityFramework.Testing.InMemoryAsyncQueryProvider.CreateQuery(System.Linq.Expressions.Expression)">
+            <summary>
+            Create query-able object.
+            </summary>
+            <param name="expression">The expression tree.</param>
+            <returns>The query-able object.</returns>
+        </member>
+        <member name="M:EntityFramework.Testing.InMemoryAsyncQueryProvider.CreateQuery``1(System.Linq.Expressions.Expression)">
+            <summary>
+            Create generic query-able object.
+            </summary>
+            <typeparam name="TElement">The element.</typeparam>
+            <param name="expression">The expression tree.</param>
+            <returns>The generic query-able object.</returns>
+        </member>
+        <member name="M:EntityFramework.Testing.InMemoryAsyncQueryProvider.Execute(System.Linq.Expressions.Expression)">
+            <summary>
+            Execute the query.
+            </summary>
+            <param name="expression">The expression tree.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:EntityFramework.Testing.InMemoryAsyncQueryProvider.Execute``1(System.Linq.Expressions.Expression)">
+            <summary>
+            Execute the query.
+            </summary>
+            <typeparam name="TResult">The result type.</typeparam>
+            <param name="expression">The expression tree.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:EntityFramework.Testing.InMemoryAsyncQueryProvider.ExecuteAsync(System.Linq.Expressions.Expression,System.Threading.CancellationToken)">
+            <summary>
+            Execute the query asynchronously.
+            </summary>
+            <param name="expression">The expression tree.</param>
+            <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken"/>.</param>
+            <returns>The result task.</returns>
+        </member>
+        <member name="M:EntityFramework.Testing.InMemoryAsyncQueryProvider.ExecuteAsync``1(System.Linq.Expressions.Expression,System.Threading.CancellationToken)">
+            <summary>
+            Execute the query asynchronously.
+            </summary>
+            <typeparam name="TResult">The result type</typeparam>
+            <param name="expression">The expression tree.</param>
+            <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken"/>.</param>
+            <returns>The result task.</returns>
+        </member>
+        <member name="M:EntityFramework.Testing.InMemoryAsyncQueryProvider.TryGetElementType(System.Type)">
+            <summary>
+            Try get element type.
+            </summary>
+            <param name="type">The expression type.</param>
+            <returns>The element type.</returns>
+        </member>
+        <member name="T:EntityFramework.Testing.InMemoryDbAsyncEnumerator`1">
+            <summary>
+            Represents in-memory async enumerator.
+            </summary>
+            <typeparam name="T">The type of objects to enumerate.</typeparam>
+        </member>
+        <member name="F:EntityFramework.Testing.InMemoryDbAsyncEnumerator`1.enumerator">
+            <summary>
+            The generic enumerator.
+            </summary>
+        </member>
+        <member name="F:EntityFramework.Testing.InMemoryDbAsyncEnumerator`1.disposed">
+            <summary>
+            A Boolean to indicate whether this object is disposed or not.
+            </summary>
+        </member>
+        <member name="M:EntityFramework.Testing.InMemoryDbAsyncEnumerator`1.#ctor(System.Collections.Generic.IEnumerator{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntityFramework.Testing.InMemoryDbAsyncEnumerator`1"/> class.
+            </summary>
+            <param name="enumerator">The generic enumerator.</param>
+        </member>
+        <member name="P:EntityFramework.Testing.InMemoryDbAsyncEnumerator`1.Current">
+            <summary>
+            Gets the current item.
+            </summary>
+        </member>
+        <member name="P:EntityFramework.Testing.InMemoryDbAsyncEnumerator`1.System#Data#Entity#Infrastructure#IDbAsyncEnumerator#Current">
+            <summary>
+            Gets the current item.
+            </summary>
+        </member>
+        <member name="M:EntityFramework.Testing.InMemoryDbAsyncEnumerator`1.MoveNextAsync(System.Threading.CancellationToken)">
+            <summary>
+            Move next asynchronously
+            </summary>
+            <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken"/>.</param>
+            <returns>The result task.</returns>
+        </member>
+        <member name="M:EntityFramework.Testing.InMemoryDbAsyncEnumerator`1.Dispose">
+            <summary>
+            Dispose this object.
+            </summary>
+        </member>
+        <member name="M:EntityFramework.Testing.InMemoryDbAsyncEnumerator`1.Dispose(System.Boolean)">
+            <summary>
+            Dispose the object
+            </summary>
+            <param name="disposing">A Boolean to indicate whether it's called by user or GC.</param>
+        </member>
+        <member name="T:EntityFramework.Testing.TypeExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.Type"/>.
+            </summary>
+        </member>
+        <member name="M:EntityFramework.Testing.TypeExtensions.GetDeclaredMethods(System.Type)">
+            <summary>
+            Get declared methods.
+            </summary>
+            <param name="type">The <see cref="T:System.Type"/>.</param>
+            <returns>The methods.</returns>
+        </member>
+    </members>
+</doc>
