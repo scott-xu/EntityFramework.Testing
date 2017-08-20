@@ -9,7 +9,6 @@
     <PackageTags>EntityFramework Entity Framework EF EF6 Testing NSubstitute</PackageTags>
     <PackageLicenseUrl>https://github.com/scott-xu/EntityFramework.Testing/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/scott-xu/EntityFramework.Testing</PackageProjectUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>EntityFramework Testing NSubstitute</Product>
     <Description>Testing helpers for using NSubstitute with EntityFramework.</Description>
     <Copyright>Copyright 2014-2017 Justin Yoo</Copyright>

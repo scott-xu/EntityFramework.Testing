@@ -9,7 +9,6 @@
     <PackageTags>EntityFramework Entity Framework EF EF6 Testing</PackageTags>
     <PackageLicenseUrl>https://github.com/scott-xu/EntityFramework.Testing/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/scott-xu/EntityFramework.Testing</PackageProjectUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>EntityFramework Testing</Product>
     <Company>Microsoft Open Technologies, Inc</Company>
     <RepositoryUrl></RepositoryUrl>

@@ -9,7 +9,6 @@
     <PackageTags>EntityFramework Entity Framework EF EF6 Testing Ninject Mocking NSubstitute</PackageTags>
     <PackageLicenseUrl>https://github.com/scott-xu/EntityFramework.Testing/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/scott-xu/EntityFramework.Testing</PackageProjectUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>EntityFramework Testing NSubstitute Ninject</Product>
     <Description>Testing helpers for using Ninject.MockingKernel.NSubstitute with EntityFramework.</Description>
     <Copyright>Copyright 2014-2017 Scott Xu</Copyright>

@@ -9,7 +9,6 @@
     <PackageTags>EntityFramework Entity Framework EF EF6 Testing Moq</PackageTags>
     <PackageLicenseUrl>https://github.com/scott-xu/EntityFramework.Testing/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/scott-xu/EntityFramework.Testing</PackageProjectUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>EntityFramework Testing Moq</Product>
     <Company>Microsoft Open Technologies, Inc</Company>
     <Description>Testing helpers for using Moq with EntityFramework.</Description>

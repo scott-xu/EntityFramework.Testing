@@ -9,7 +9,6 @@
     <PackageTags>EntityFramework Entity Framework EF EF6 Testing FakeItEasy</PackageTags>
     <PackageLicenseUrl>https://github.com/scott-xu/EntityFramework.Testing/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/scott-xu/EntityFramework.Testing</PackageProjectUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>EntityFramework Testing FakeItEasy</Product>
     <Description>Testing helpers for using FakeItEasy with EntityFramework.</Description>
     <Copyright>Copyright 2015-2017 Scott Xu</Copyright>

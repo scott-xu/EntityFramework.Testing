@@ -9,7 +9,6 @@
     <PackageTags>EntityFramework Entity Framework EF EF6 Testing Ninject Mocking FakeItEasy</PackageTags>
     <PackageLicenseUrl>https://github.com/scott-xu/EntityFramework.Testing/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/scott-xu/EntityFramework.Testing</PackageProjectUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>EntityFramework Testing FakeItEasy Ninject</Product>
     <Description>Testing helpers for using Ninject.MockingKernel.FakeItEasy with EntityFramework.</Description>
     <Copyright>Copyright 2015-2017 Scott Xu</Copyright>
