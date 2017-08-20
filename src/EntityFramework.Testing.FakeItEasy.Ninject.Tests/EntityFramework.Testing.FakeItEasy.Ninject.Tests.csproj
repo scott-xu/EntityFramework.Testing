@@ -9,7 +9,7 @@
     <PackageReference Include="Ninject" Version="3.2.2" />
     <PackageReference Include="Ninject.MockingKernel" Version="3.2.1" />
     <PackageReference Include="Ninject.MockingKernel.FakeItEasy" Version="3.2.2" />
-    <PackageReference Include="FakeItEasy" Version="4.0.0" />
+    <PackageReference Include="FakeItEasy" Version="1.25.1" />
     <PackageReference Include="xunit" Version="1.9.2" />
   </ItemGroup>
 

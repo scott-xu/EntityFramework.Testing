@@ -14,7 +14,6 @@ build:
   publish_nuget: true
   parallel: true
   verbosity: minimal
-test: off
 artifacts:
 - path: '**\*.nupkg'
 deploy:
