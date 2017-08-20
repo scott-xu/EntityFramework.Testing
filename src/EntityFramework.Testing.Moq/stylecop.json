@@ -9,6 +9,9 @@
   "settings": {
     "documentationRules": {
       "companyName": "Rowan Miller, Scott Xu"
+    },
+    "layoutRules": {
+      "newlineAtEndOfFile": "omit"
     }
   }
 }

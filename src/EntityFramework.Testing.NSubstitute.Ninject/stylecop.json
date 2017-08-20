@@ -9,6 +9,9 @@
   "settings": {
     "documentationRules": {
       "companyName": "Scott Xu"
+    },
+    "layoutRules": {
+      "newlineAtEndOfFile": "omit"
     }
   }
 }

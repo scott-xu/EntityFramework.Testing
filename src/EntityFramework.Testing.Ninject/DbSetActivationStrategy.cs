@@ -28,7 +28,7 @@ namespace EntityFramework.Testing.Ninject
                 throw new ArgumentNullException("reference");
             }
 
-            if (context.Request.Service.IsGenericType() && context.Request.Service.GetGenericTypeDefinition() == typeof(DbSet<>))
+            if (context.Request.Service.IsGenericType && context.Request.Service.GetGenericTypeDefinition() == typeof(DbSet<>))
             {
                 this.ActivateDbSet(context, reference);
             }

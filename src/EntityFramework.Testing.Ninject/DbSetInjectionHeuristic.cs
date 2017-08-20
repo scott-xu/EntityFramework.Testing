@@ -27,7 +27,7 @@ namespace EntityFramework.Testing.Ninject
         {
             return member is PropertyInfo &&
                 ((PropertyInfo)member).CanWrite &&
-                ((PropertyInfo)member).PropertyType.IsGenericType() &&
+                ((PropertyInfo)member).PropertyType.IsGenericType &&
                 ((PropertyInfo)member).PropertyType.GetGenericTypeDefinition() == typeof(DbSet<>) &&
                 ((PropertyInfo)member).GetAccessors()[0].IsVirtual &&
                 !((PropertyInfo)member).GetAccessors()[0].IsFinal;

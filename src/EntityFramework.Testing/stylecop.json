@@ -9,6 +9,9 @@
   "settings": {
     "documentationRules": {
       "companyName": "Microsoft Open Technologies, Inc"
+    },
+    "layoutRules": {
+      "newlineAtEndOfFile": "omit"
     }
   }
 }

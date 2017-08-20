@@ -53,18 +53,18 @@ namespace EntityFramework.Testing.Ninject
                     {
                         ProviderCallback = this.mockProviderCallbackProvider.GetCreationCallback(),
                         ScopeCallback = ctx => StandardScopeCallbacks.Singleton,
-                        IsImplicit = true
-                    }
+                        IsImplicit = true,
+                    },
                 };
             }
 
-            if (request.Service.IsGenericType() && request.Service.GetGenericTypeDefinition() == typeof(DbSet<>))
+            if (request.Service.IsGenericType && request.Service.GetGenericTypeDefinition() == typeof(DbSet<>))
             {
                 var binding = new Binding(request.Service)
                 {
                     ProviderCallback = this.mockProviderCallbackProvider.GetCreationCallback(),
                     ScopeCallback = ctx => StandardScopeCallbacks.Singleton,
-                    IsImplicit = true
+                    IsImplicit = true,
                 };
 
                 binding.Parameters.Add(new AdditionalInterfaceParameter(typeof(IQueryable<>).MakeGenericType(request.Service.GetGenericArguments())));

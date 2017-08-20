@@ -9,6 +9,9 @@
   "settings": {
     "documentationRules": {
       "companyName": "Justin Yoo"
+    },
+    "layoutRules": {
+      "newlineAtEndOfFile": "omit"
     }
   }
 }

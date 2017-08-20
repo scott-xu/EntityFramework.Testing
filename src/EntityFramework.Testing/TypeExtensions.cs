@@ -31,35 +31,5 @@ namespace EntityFramework.Testing
             return type.GetTypeInfo().DeclaredMethods;
 #endif
         }
-
-        /// <summary>
-        /// Is generic type.
-        /// </summary>
-        /// <param name="type">The <see cref="Type"/>.</param>
-        /// <returns>A Boolean to indicate whether the type is generic.</returns>
-        public static bool IsGenericType(this Type type)
-        {
-            DebugCheck.NotNull(type);
-#if NET40
-            return type.IsGenericType;
-#else
-            return type.GetTypeInfo().IsGenericType;
-#endif
-        }
-
-        /// <summary>
-        /// Is generic type definition.
-        /// </summary>
-        /// <param name="type">The <see cref="Type"/>.</param>
-        /// <returns>A Boolean to indicate whether the type is generic type definition.</returns>
-        public static bool IsGenericTypeDefinition(this Type type)
-        {
-            DebugCheck.NotNull(type);
-#if NET40
-            return type.IsGenericTypeDefinition;
-#else
-            return type.GetTypeInfo().IsGenericTypeDefinition;
-#endif
-        }
     }
 }
