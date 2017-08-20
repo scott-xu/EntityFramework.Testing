@@ -9,7 +9,7 @@ dotnet_csproj:
   version: '{version}'
   package_version: '{version}'
 cache: 
-  - packages
+  - '%USERPROFILE%\.nuget\packages'
 before_build:
 - cmd: nuget restore
 build:
