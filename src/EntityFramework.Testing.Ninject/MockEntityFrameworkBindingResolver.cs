@@ -68,9 +68,8 @@ namespace EntityFramework.Testing.Ninject
                 };
 
                 binding.Parameters.Add(new AdditionalInterfaceParameter(typeof(IQueryable<>).MakeGenericType(request.Service.GetGenericArguments())));
-#if !NET40
                 binding.Parameters.Add(new AdditionalInterfaceParameter(typeof(IDbAsyncEnumerable<>).MakeGenericType(request.Service.GetGenericArguments())));
-#endif
+
                 return new[] { binding };
             }
 

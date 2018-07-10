@@ -18,14 +18,14 @@ namespace EntityFramework.Testing.Moq.Tests
             .SetupData(data);
 
             var count = 0;
-            foreach (var item in set.Object)                            
+            foreach (var item in set.Object)
             {
                 count++;
             }
 
             Assert.Equal(2, count);
         }
-#if !NET40
+
         [Fact]
         public async Task Can_enumerate_set_async()
         {
@@ -39,7 +39,7 @@ namespace EntityFramework.Testing.Moq.Tests
 
             Assert.Equal(2, count);
         }
-#endif
+
         [Fact]
         public void Can_use_linq_materializer_directly_on_set()
         {
@@ -53,7 +53,6 @@ namespace EntityFramework.Testing.Moq.Tests
             Assert.Equal(2, result.Count);
         }
 
-#if !NET40
         [Fact]
         public async Task Can_use_linq_materializer_directly_on_set_async()
         {
@@ -66,14 +65,13 @@ namespace EntityFramework.Testing.Moq.Tests
 
             Assert.Equal(2, result.Count);
         }
-#endif
 
         [Fact]
         public void Can_use_linq_opeartors()
         {
-            var data = new List<Blog> 
-            { 
-                new Blog { BlogId = 1 }, 
+            var data = new List<Blog>
+            {
+                new Blog { BlogId = 1 },
                 new Blog { BlogId = 2 },
                 new Blog { BlogId = 3}
             };
@@ -91,13 +89,12 @@ namespace EntityFramework.Testing.Moq.Tests
             Assert.Equal(2, result[1].BlogId);
         }
 
-#if !NET40
         [Fact]
         public async Task Can_use_linq_opeartors_async()
         {
-            var data = new List<Blog> 
-            { 
-                new Blog { BlogId = 1 }, 
+            var data = new List<Blog>
+            {
+                new Blog { BlogId = 1 },
                 new Blog { BlogId = 2 },
                 new Blog { BlogId = 3}
             };
@@ -114,8 +111,6 @@ namespace EntityFramework.Testing.Moq.Tests
             Assert.Equal(3, result[0].BlogId);
             Assert.Equal(2, result[1].BlogId);
         }
-
-#endif
 
         [Fact]
         public void Can_use_include_directly_on_set()

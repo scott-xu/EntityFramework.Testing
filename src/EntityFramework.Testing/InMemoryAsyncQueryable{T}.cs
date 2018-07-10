@@ -9,9 +9,7 @@ namespace EntityFramework.Testing
     using System;
     using System.Collections;
     using System.Collections.Generic;
-#if !NET40
     using System.Data.Entity.Infrastructure;
-#endif
     using System.Linq;
     using System.Linq.Expressions;
 
@@ -19,11 +17,7 @@ namespace EntityFramework.Testing
     /// Represents in-memory async query-able object.
     /// </summary>
     /// <typeparam name="T">The type of the content of the data source.</typeparam>
-#if !NET40
     public class InMemoryAsyncQueryable<T> : IOrderedQueryable<T>, IDbAsyncEnumerable<T>
-#else
-    public class InMemoryAsyncQueryable<T> : IOrderedQueryable<T>
-#endif
     {
         /// <summary>
         /// The query-able object.
@@ -104,7 +98,6 @@ namespace EntityFramework.Testing
             return this;
         }
 
-#if !NET40
         /// <summary>
         /// Get generic DB async enumerator
         /// </summary>
@@ -122,6 +115,5 @@ namespace EntityFramework.Testing
         {
             return this.GetAsyncEnumerator();
         }
-#endif
     }
 }

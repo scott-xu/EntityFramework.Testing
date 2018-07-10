@@ -15,7 +15,7 @@ namespace EntityFramework.Testing.FakeItEasy.Tests
         {
             var data = new List<Blog> { new Blog { }, new Blog { } };
 
-            var set = A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)))
+            var set = A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)).Implements(typeof(IDbAsyncEnumerable<Blog>)))
                 .SetupData(data);
 
             var count = 0;
@@ -26,7 +26,7 @@ namespace EntityFramework.Testing.FakeItEasy.Tests
 
             Assert.Equal(2, count);
         }
-#if !NET40
+
         [Fact]
         public async Task Can_enumerate_set_async()
         {
@@ -40,13 +40,13 @@ namespace EntityFramework.Testing.FakeItEasy.Tests
 
             Assert.Equal(2, count);
         }
-#endif
+
         [Fact]
         public void Can_use_linq_materializer_directly_on_set()
         {
             var data = new List<Blog> { new Blog(), new Blog() };
 
-            var set = A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)))
+            var set = A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)).Implements(typeof(IDbAsyncEnumerable<Blog>)))
                 .SetupData(data);
 
             var result = set.ToList();
@@ -54,7 +54,6 @@ namespace EntityFramework.Testing.FakeItEasy.Tests
             Assert.Equal(2, result.Count);
         }
 
-#if !NET40
         [Fact]
         public async Task Can_use_linq_materializer_directly_on_set_async()
         {
@@ -67,7 +66,6 @@ namespace EntityFramework.Testing.FakeItEasy.Tests
 
             Assert.Equal(2, result.Count);
         }
-#endif
 
         [Fact]
         public void Can_use_linq_opeartors()
@@ -79,7 +77,7 @@ namespace EntityFramework.Testing.FakeItEasy.Tests
                 new Blog { BlogId = 3}
             };
 
-            var set = A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)))
+            var set = A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)).Implements(typeof(IDbAsyncEnumerable<Blog>)))
                 .SetupData(data);
 
             var result = set
@@ -92,7 +90,6 @@ namespace EntityFramework.Testing.FakeItEasy.Tests
             Assert.Equal(2, result[1].BlogId);
         }
 
-#if !NET40
         [Fact]
         public async Task Can_use_linq_opeartors_async()
         {
@@ -116,14 +113,12 @@ namespace EntityFramework.Testing.FakeItEasy.Tests
             Assert.Equal(2, result[1].BlogId);
         }
 
-#endif
-
         [Fact]
         public void Can_use_include_directly_on_set()
         {
             var data = new List<Blog> { new Blog(), new Blog() };
 
-            var set = A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)))
+            var set = A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)).Implements(typeof(IDbAsyncEnumerable<Blog>)))
                 .SetupData(data);
 
             var result = set
@@ -138,7 +133,7 @@ namespace EntityFramework.Testing.FakeItEasy.Tests
         {
             var data = new List<Blog> { new Blog(), new Blog() };
 
-            var set = A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)))
+            var set = A.Fake<DbSet<Blog>>(o => o.Implements(typeof(IQueryable<Blog>)).Implements(typeof(IDbAsyncEnumerable<Blog>)))
                 .SetupData(data);
 
             var result = set

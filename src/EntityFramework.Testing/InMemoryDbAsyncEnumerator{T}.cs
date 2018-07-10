@@ -4,7 +4,6 @@
 // </copyright>
 //-----------------------------------------------------------------------------------------------------
 
-#if !NET40
 namespace EntityFramework.Testing
 {
     using System.Collections.Generic;
@@ -87,4 +86,3 @@ namespace EntityFramework.Testing
         }
     }
 }
-#endif

@@ -11,10 +11,8 @@ namespace NSubstitute
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
-#if !NET40
     using System.Threading;
     using System.Threading.Tasks;
-#endif
     using EntityFramework.Testing;
     using NSubstitute.Core;
 
@@ -46,18 +44,14 @@ namespace NSubstitute
             ((IQueryable<TEntity>)dbSet).ElementType.Returns(info => getQuery().ElementType);
             ((IQueryable<TEntity>)dbSet).GetEnumerator().Returns(info => getQuery().GetEnumerator());
 
-#if !NET40
             ((IDbAsyncEnumerable<TEntity>)dbSet).GetAsyncEnumerator().Returns(info => getQuery().GetAsyncEnumerator());
-#endif
 
             dbSet.AsNoTracking().Returns(dbSet);
             dbSet.Include(Arg.Any<string>()).Returns(dbSet);
             dbSet.Find(Arg.Any<object[]>()).Returns(new Func<CallInfo, TEntity>(info => find(info.Arg<object[]>())));
 
-#if !NET40
             dbSet.FindAsync(Arg.Any<object[]>()).Returns(new Func<CallInfo, Task<TEntity>>(info => Task.Run(() => find(info.Arg<object[]>()))));
             dbSet.FindAsync(Arg.Any<CancellationToken>(), Arg.Any<object[]>()).Returns(new Func<CallInfo, Task<TEntity>>(info => Task.Run(() => find(info.Arg<object[]>()), info.Arg<CancellationToken>())));
-#endif
 
             dbSet.Create().Returns(args => Activator.CreateInstance<TEntity>());
 

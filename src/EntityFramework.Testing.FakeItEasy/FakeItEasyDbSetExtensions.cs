@@ -11,10 +11,8 @@ namespace FakeItEasy
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
-#if !NET40
     using System.Threading;
     using System.Threading.Tasks;
-#endif
     using EntityFramework.Testing;
 
     /// <summary>
@@ -43,17 +41,14 @@ namespace FakeItEasy
             A.CallTo(() => ((IQueryable<TEntity>)dbSet).ElementType).ReturnsLazily(info => query.ElementType);
             A.CallTo(() => ((IQueryable<TEntity>)dbSet).GetEnumerator()).ReturnsLazily(info => query.GetEnumerator());
 
-#if !NET40
             A.CallTo(() => ((IDbAsyncEnumerable<TEntity>)dbSet).GetAsyncEnumerator()).ReturnsLazily(info => query.GetAsyncEnumerator());
-#endif
+
             A.CallTo(() => dbSet.AsNoTracking()).Returns(dbSet);
             A.CallTo(() => dbSet.Include(A<string>._)).Returns(dbSet);
             A.CallTo(() => dbSet.Find(A<object[]>._)).ReturnsLazily<TEntity, object[]>(objs => find(objs));
 
-#if !NET40
             A.CallTo(() => dbSet.FindAsync(A<object[]>._)).ReturnsLazily<Task<TEntity>, object[]>(objs => Task.Run(() => find(objs)));
             A.CallTo(() => dbSet.FindAsync(A<CancellationToken>._, A<object[]>._)).ReturnsLazily<Task<TEntity>, CancellationToken, object[]>((token, objs) => Task.Run(() => find(objs), token));
-#endif
 
             A.CallTo(() => dbSet.Create()).ReturnsLazily(() => Activator.CreateInstance<TEntity>());
 

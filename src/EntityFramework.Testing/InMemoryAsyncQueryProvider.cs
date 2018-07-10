@@ -9,25 +9,17 @@ namespace EntityFramework.Testing
     using System;
     using System.Collections;
     using System.Collections.Generic;
-#if !NET40
     using System.Data.Entity.Infrastructure;
-#endif
     using System.Linq;
     using System.Linq.Expressions;
     using System.Reflection;
-#if !NET40
     using System.Threading;
     using System.Threading.Tasks;
-#endif
 
     /// <summary>
     /// Represents in-memory async query provider
     /// </summary>
-#if !NET40
     public class InMemoryAsyncQueryProvider : IQueryProvider, IDbAsyncQueryProvider
-#else
-    public class InMemoryAsyncQueryProvider : IQueryProvider
-#endif
     {
         /// <summary>
         /// The method to create query.
@@ -106,7 +98,6 @@ namespace EntityFramework.Testing
             return this.provider.Execute<TResult>(expression);
         }
 
-#if !NET40
         /// <summary>
         /// Execute the query asynchronously.
         /// </summary>
@@ -131,7 +122,6 @@ namespace EntityFramework.Testing
             await Task.Yield();
             return this.Execute<TResult>(expression);
         }
-#endif
 
         /// <summary>
         /// Try get element type.

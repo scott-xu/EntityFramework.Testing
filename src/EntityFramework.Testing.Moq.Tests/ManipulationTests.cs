@@ -3,9 +3,7 @@
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
-#if !NET40
     using System.Threading.Tasks;
-#endif
     using global::Moq;
     using Xunit;
 
@@ -24,7 +22,7 @@
 
             var result = set.Object.ToList();
 
-            Assert.Equal(0, result.Count);
+            Assert.Empty(result);
         }
 
         [Fact]
@@ -57,7 +55,7 @@
 
             var result = set.Object.ToList();
 
-            Assert.Equal(1, result.Count);
+            Assert.Single(result);
         }
 
         [Fact]
@@ -90,7 +88,7 @@
 
             var result = set.Object.ToList();
 
-            Assert.Equal(1, result.Count);
+            Assert.Single(result);
         }
 
         [Fact]
@@ -106,7 +104,7 @@
 
             var result = set.Object.ToList();
 
-            Assert.Equal(1, result.Count);
+            Assert.Single(result);
         }
 
         [Fact]
@@ -165,10 +163,9 @@
 
             var result2 = set.Object.ToList();
 
-            Assert.Equal(1, result2.Count);
+            Assert.Single(result2);
         }
 
-#if !NET40
         [Fact]
         public async Task Can_find_set_async()
         {
@@ -188,7 +185,6 @@
             Assert.NotNull(result);
             Assert.Equal(1, result.BlogId);
         }
-#endif
 
         [Fact]
         public void Can_specify_asNoTracking()
@@ -200,7 +196,7 @@
                 .AsNoTracking()
                 .ToList();
 
-            Assert.Equal(1, result.Count);
+            Assert.Single(result);
         }
 
         [Fact]

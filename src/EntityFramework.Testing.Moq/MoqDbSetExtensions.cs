@@ -11,10 +11,8 @@ namespace Moq
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
-#if !NET40
     using System.Threading;
     using System.Threading.Tasks;
-#endif
     using EntityFramework.Testing;
 
     /// <summary>
@@ -42,17 +40,13 @@ namespace Moq
             mock.As<IQueryable<TEntity>>().Setup(m => m.Expression).Returns(query.Expression);
             mock.As<IQueryable<TEntity>>().Setup(m => m.ElementType).Returns(query.ElementType);
             mock.As<IQueryable<TEntity>>().Setup(m => m.GetEnumerator()).Returns(query.GetEnumerator);
-#if !NET40
             mock.As<IDbAsyncEnumerable<TEntity>>().Setup(m => m.GetAsyncEnumerator()).Returns(query.GetAsyncEnumerator);
-#endif
             mock.Setup(m => m.AsNoTracking()).Returns(mock.Object);
             mock.Setup(m => m.Include(It.IsAny<string>())).Returns(mock.Object);
             mock.Setup(m => m.Find(It.IsAny<object[]>())).Returns<object[]>(find);
 
-#if !NET40
             mock.Setup(m => m.FindAsync(It.IsAny<object[]>())).Returns<object[]>(objs => Task.Run(() => find(objs)));
             mock.Setup(m => m.FindAsync(It.IsAny<CancellationToken>(), It.IsAny<object[]>())).Returns<CancellationToken, object[]>((tocken, objs) => Task.Run(() => find(objs), tocken));
-#endif
 
             mock.Setup(m => m.Create()).Returns(() => Activator.CreateInstance<TEntity>());
 

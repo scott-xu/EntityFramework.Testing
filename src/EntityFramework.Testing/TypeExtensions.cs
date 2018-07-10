@@ -23,13 +23,7 @@ namespace EntityFramework.Testing
         public static IEnumerable<MethodInfo> GetDeclaredMethods(this Type type)
         {
             DebugCheck.NotNull(type);
-#if NET40
-            const BindingFlags BindingFlags
-                = BindingFlags.Static | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly;
-            return type.GetMethods(BindingFlags);
-#else
             return type.GetTypeInfo().DeclaredMethods;
-#endif
         }
     }
 }

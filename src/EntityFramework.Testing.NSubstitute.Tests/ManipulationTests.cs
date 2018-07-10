@@ -10,9 +10,7 @@ namespace EntityFramework.Testing.NSubstitute.Tests
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
-#if !NET40
     using System.Threading.Tasks;
-#endif
     using global::NSubstitute;
     using Xunit;
 
@@ -31,7 +29,7 @@ namespace EntityFramework.Testing.NSubstitute.Tests
 
             var result = set.ToList();
 
-            Assert.Equal(1, result.Count);
+            Assert.Single(result);
         }
 
         [Fact]
@@ -62,7 +60,7 @@ namespace EntityFramework.Testing.NSubstitute.Tests
 
             var result = set.ToList();
 
-            Assert.Equal(1, result.Count);
+            Assert.Single(result);
         }
 
         [Fact]
@@ -93,7 +91,7 @@ namespace EntityFramework.Testing.NSubstitute.Tests
 
             var result = set.ToList();
 
-            Assert.Equal(1, result.Count);
+            Assert.Single(result);
         }
 
         [Fact]
@@ -108,7 +106,7 @@ namespace EntityFramework.Testing.NSubstitute.Tests
 
             var result = set.ToList();
 
-            Assert.Equal(1, result.Count);
+            Assert.Single(result);
         }
 
         [Fact]
@@ -164,10 +162,9 @@ namespace EntityFramework.Testing.NSubstitute.Tests
 
             var result2 = set.ToList();
 
-            Assert.Equal(1, result2.Count);
+            Assert.Single(result2);
         }
 
-#if !NET40
         [Fact]
         public async Task Can_find_set_async()
         {
@@ -187,7 +184,6 @@ namespace EntityFramework.Testing.NSubstitute.Tests
             Assert.NotNull(result);
             Assert.Equal(1, result.BlogId);
         }
-#endif
 
         [Fact]
         public void Can_specify_asNoTracking()
@@ -199,7 +195,7 @@ namespace EntityFramework.Testing.NSubstitute.Tests
                 .AsNoTracking()
                 .ToList();
 
-            Assert.Equal(1, result.Count);
+            Assert.Single(result);
         }
 
         [Fact]
@@ -213,11 +209,7 @@ namespace EntityFramework.Testing.NSubstitute.Tests
 
         private DbSet<Blog> GetSubstituteDbSet()
         {
-#if NET40
-            return Substitute.For<DbSet<Blog>, IQueryable<Blog>>();
-#else
             return Substitute.For<DbSet<Blog>, IQueryable<Blog>, IDbAsyncEnumerable<Blog>>();
-#endif
         }
 
         public class Blog
