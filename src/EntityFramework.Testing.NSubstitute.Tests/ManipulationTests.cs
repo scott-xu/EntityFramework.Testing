@@ -6,6 +6,7 @@
 
 namespace EntityFramework.Testing.NSubstitute.Tests
 {
+    using System;
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
@@ -57,6 +58,24 @@ namespace EntityFramework.Testing.NSubstitute.Tests
             var set = this.GetSubstituteDbSet().SetupData(data);
 
             set.RemoveRange(range);
+
+            var result = set.ToList();
+
+            Assert.Single(result);
+        }
+
+        [Fact]
+        public void Can_removeRange_referencingSelf_sets()
+        {
+            var blog = new Blog() { BlogId = 1 , Url = "X"};
+            var blog2 = new Blog() { BlogId = 2};
+            var blog3 = new Blog() { BlogId = 3 };
+            var data = new List<Blog> { blog, blog2,  blog3};
+            
+
+            var set = this.GetSubstituteDbSet().SetupData(data);
+
+            set.RemoveRange(from b in set where b.Url == null select b);
 
             var result = set.ToList();
 
@@ -135,6 +154,26 @@ namespace EntityFramework.Testing.NSubstitute.Tests
             var result = set.ToList();
 
             Assert.Equal(3, result.Count);
+        }
+
+        [Fact]
+        public void Can_addRange_referencingSelf_sets()
+        {
+            
+            var blog2 = new Blog() { BlogId = 2 };
+            var blog3 = new Blog() { BlogId = 3 };
+            var blog1 = new Blog() { BlogId = 1};
+            var data = new List<Blog> { blog1, blog2 , blog3};
+
+
+
+            var set = this.GetSubstituteDbSet().SetupData(data);
+
+            set.AddRange(from s in set select new Blog { BlogId = s.BlogId * 4 });
+
+            var result = set.ToList();
+
+            Assert.Equal(6, result.Count);
         }
 
         [Fact]

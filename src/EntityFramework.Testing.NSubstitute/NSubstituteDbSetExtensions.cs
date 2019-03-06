@@ -59,7 +59,7 @@ namespace NSubstitute
 
             dbSet.RemoveRange(Arg.Do<IEnumerable<TEntity>>(entities =>
             {
-                foreach (var entity in entities)
+                foreach (var entity in entities.ToList())
                 {
                     data.Remove(entity);
                 }
@@ -71,7 +71,7 @@ namespace NSubstitute
 
             dbSet.AddRange(Arg.Do<IEnumerable<TEntity>>(entities =>
             {
-                foreach (var entity in entities)
+                foreach (var entity in entities.ToList())
                 {
                     data.Add(entity);
                 }
