@@ -10,7 +10,7 @@ namespace EntityFramework.Testing.Moq.Ninject
     using global::Ninject.Activation.Strategies;
 
     /// <summary>
-    /// EntityFramework Testing Module
+    /// EntityFramework Testing Module.
     /// </summary>
     public class EntityFrameworkTestingMoqModule : EntityFrameworkTestingModule
     {

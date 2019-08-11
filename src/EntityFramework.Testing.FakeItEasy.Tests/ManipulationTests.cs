@@ -155,7 +155,6 @@
         [Fact]
         public void Can_addRange_referencingSelf_sets()
         {
-
             var blog2 = new Blog() { BlogId = 2 };
             var blog3 = new Blog() { BlogId = 3 };
             var blog1 = new Blog() { BlogId = 1 };

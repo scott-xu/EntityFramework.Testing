@@ -19,7 +19,7 @@ namespace EntityFramework.Testing.Ninject
     public class DbSetInjectionHeuristic : NinjectComponent, IInjectionHeuristic
     {
         /// <summary>
-        /// Returns a value indicating whether the specified member should be injected
+        /// Returns a value indicating whether the specified member should be injected.
         /// </summary>
         /// <param name="member">The member in question.</param>
         /// <returns>True if the member should be injected; otherwise false.</returns>

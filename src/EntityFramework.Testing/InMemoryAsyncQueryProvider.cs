@@ -17,7 +17,7 @@ namespace EntityFramework.Testing
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Represents in-memory async query provider
+    /// Represents in-memory async query provider.
     /// </summary>
     public class InMemoryAsyncQueryProvider : IQueryProvider, IDbAsyncQueryProvider
     {
@@ -55,7 +55,7 @@ namespace EntityFramework.Testing
         }
 
         /// <summary>
-        /// Create query-able object.
+        /// Creates query-able object.
         /// </summary>
         /// <param name="expression">The expression tree.</param>
         /// <returns>The query-able object.</returns>
@@ -67,7 +67,7 @@ namespace EntityFramework.Testing
         }
 
         /// <summary>
-        /// Create generic query-able object.
+        /// Creates generic query-able object.
         /// </summary>
         /// <typeparam name="TElement">The element.</typeparam>
         /// <param name="expression">The expression tree.</param>
@@ -78,7 +78,7 @@ namespace EntityFramework.Testing
         }
 
         /// <summary>
-        /// Execute the query.
+        /// Executes the query.
         /// </summary>
         /// <param name="expression">The expression tree.</param>
         /// <returns>The result.</returns>
@@ -88,7 +88,7 @@ namespace EntityFramework.Testing
         }
 
         /// <summary>
-        /// Execute the query.
+        /// Executes the query.
         /// </summary>
         /// <typeparam name="TResult">The result type.</typeparam>
         /// <param name="expression">The expression tree.</param>
@@ -99,7 +99,7 @@ namespace EntityFramework.Testing
         }
 
         /// <summary>
-        /// Execute the query asynchronously.
+        /// Executes the query asynchronously.
         /// </summary>
         /// <param name="expression">The expression tree.</param>
         /// <param name="cancellationToken">The <see cref="CancellationToken"/>.</param>
@@ -111,9 +111,9 @@ namespace EntityFramework.Testing
         }
 
         /// <summary>
-        /// Execute the query asynchronously.
+        /// Executes the query asynchronously.
         /// </summary>
-        /// <typeparam name="TResult">The result type</typeparam>
+        /// <typeparam name="TResult">The result type.</typeparam>
         /// <param name="expression">The expression tree.</param>
         /// <param name="cancellationToken">The <see cref="CancellationToken"/>.</param>
         /// <returns>The result task.</returns>
@@ -124,7 +124,7 @@ namespace EntityFramework.Testing
         }
 
         /// <summary>
-        /// Try get element type.
+        /// Tries to get element type.
         /// </summary>
         /// <param name="type">The expression type.</param>
         /// <returns>The element type.</returns>

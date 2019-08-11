@@ -53,7 +53,7 @@ namespace EntityFramework.Testing
         }
 
         /// <summary>
-        /// Move next asynchronously
+        /// Moves next asynchronously.
         /// </summary>
         /// <param name="cancellationToken">The <see cref="CancellationToken"/>.</param>
         /// <returns>The result task.</returns>
@@ -64,7 +64,7 @@ namespace EntityFramework.Testing
         }
 
         /// <summary>
-        /// Dispose this object.
+        /// Disposes this object.
         /// </summary>
         public void Dispose()
         {
@@ -72,7 +72,7 @@ namespace EntityFramework.Testing
         }
 
         /// <summary>
-        /// Dispose the object
+        /// Disposes the object.
         /// </summary>
         /// <param name="disposing">A Boolean to indicate whether it's called by user or GC.</param>
         protected virtual void Dispose(bool disposing)

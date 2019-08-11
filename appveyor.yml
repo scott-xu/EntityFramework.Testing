@@ -11,7 +11,7 @@ dotnet_csproj:
 cache: 
   - '%USERPROFILE%\.nuget\packages'
 before_build:
-- cmd: nuget restore
+- cmd: nuget restore -Verbosity quiet
 build:
   publish_nuget: true
   parallel: true

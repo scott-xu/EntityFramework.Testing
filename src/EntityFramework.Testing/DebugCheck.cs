@@ -9,12 +9,12 @@ namespace EntityFramework.Testing
     using System.Diagnostics;
 
     /// <summary>
-    /// Assert value in debug mode
+    /// Asserts value in debug mode.
     /// </summary>
     internal class DebugCheck
     {
         /// <summary>
-        /// Assert the value is not null.
+        /// Asserts the value being not null.
         /// </summary>
         /// <typeparam name="T">The reference type. </typeparam>
         /// <param name="value">The value. </param>

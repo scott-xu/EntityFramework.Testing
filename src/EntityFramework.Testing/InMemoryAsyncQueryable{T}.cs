@@ -84,7 +84,7 @@ namespace EntityFramework.Testing
         }
 
         /// <summary>
-        /// Include navigation properties.
+        /// Includes navigation properties.
         /// </summary>
         /// <param name="path">The property path.</param>
         /// <returns>The query-able object itself.</returns>
@@ -99,7 +99,7 @@ namespace EntityFramework.Testing
         }
 
         /// <summary>
-        /// Get generic DB async enumerator.
+        /// Gets generic DB async enumerator.
         /// </summary>
         /// <returns>The <see cref="IDbAsyncEnumerator{T}"/>.</returns>
         public IDbAsyncEnumerator<T> GetAsyncEnumerator()
@@ -108,7 +108,7 @@ namespace EntityFramework.Testing
         }
 
         /// <summary>
-        /// Get DB async enumerator.
+        /// Gets DB async enumerator.
         /// </summary>
         /// <returns>The <see cref="IDbAsyncEnumerator"/>.</returns>
         IDbAsyncEnumerator IDbAsyncEnumerable.GetAsyncEnumerator()
