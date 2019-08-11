@@ -61,7 +61,7 @@ namespace Moq
             mock.Setup(m => m.RemoveRange(It.IsAny<IEnumerable<TEntity>>()))
                 .Callback<IEnumerable<TEntity>>(entities =>
                 {
-                    foreach (var entity in entities)
+                    foreach (var entity in entities.ToList())
                     {
                         data.Remove(entity);
                     }
@@ -89,7 +89,7 @@ namespace Moq
             mock.Setup(m => m.AddRange(It.IsAny<IEnumerable<TEntity>>()))
                 .Callback<IEnumerable<TEntity>>(entities =>
                 {
-                    foreach (var entity in entities)
+                    foreach (var entity in entities.ToList())
                     {
                         data.Add(entity);
                     }

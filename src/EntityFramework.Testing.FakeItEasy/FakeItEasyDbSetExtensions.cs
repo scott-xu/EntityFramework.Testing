@@ -60,7 +60,7 @@ namespace FakeItEasy
 
             A.CallTo(() => dbSet.RemoveRange(A<IEnumerable<TEntity>>._)).ReturnsLazily<IEnumerable<TEntity>, IEnumerable<TEntity>>(entities =>
             {
-                foreach (var entity in entities)
+                foreach (var entity in entities.ToList())
                 {
                     data.Remove(entity);
                 }
@@ -82,7 +82,7 @@ namespace FakeItEasy
 
             A.CallTo(() => dbSet.AddRange(A<IEnumerable<TEntity>>._)).ReturnsLazily<IEnumerable<TEntity>, IEnumerable<TEntity>>(entities =>
             {
-                foreach (var entity in entities)
+                foreach (var entity in entities.ToList())
                 {
                     data.Add(entity);
                 }

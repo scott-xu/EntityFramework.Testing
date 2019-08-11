@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.8
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29201.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Testing", "src\EntityFramework.Testing\EntityFramework.Testing.csproj", "{4351E4D4-C68C-4CF6-998B-AB56D8A3760D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework.Testing", "src\EntityFramework.Testing\EntityFramework.Testing.csproj", "{4351E4D4-C68C-4CF6-998B-AB56D8A3760D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Testing.Moq", "src\EntityFramework.Testing.Moq\EntityFramework.Testing.Moq.csproj", "{13B2C70C-A084-44AF-8F75-975D84438DEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework.Testing.Moq", "src\EntityFramework.Testing.Moq\EntityFramework.Testing.Moq.csproj", "{13B2C70C-A084-44AF-8F75-975D84438DEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Testing.Moq.Tests", "src\EntityFramework.Testing.Moq.Tests\EntityFramework.Testing.Moq.Tests.csproj", "{1F55F581-F0D8-423D-A514-636C161ACDB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework.Testing.Moq.Tests", "src\EntityFramework.Testing.Moq.Tests\EntityFramework.Testing.Moq.Tests.csproj", "{1F55F581-F0D8-423D-A514-636C161ACDB4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0B958171-3200-4A3D-BE6B-DC53507A82CF}"
 	ProjectSection(SolutionItems) = preProject
@@ -18,29 +18,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ReleaseNotes.md = ReleaseNotes.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Testing.NSubstitute", "src\EntityFramework.Testing.NSubstitute\EntityFramework.Testing.NSubstitute.csproj", "{A46784E2-B54B-4FD8-A95F-03B05CA8F244}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework.Testing.NSubstitute", "src\EntityFramework.Testing.NSubstitute\EntityFramework.Testing.NSubstitute.csproj", "{A46784E2-B54B-4FD8-A95F-03B05CA8F244}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Testing.NSubstitute.Tests", "src\EntityFramework.Testing.NSubstitute.Tests\EntityFramework.Testing.NSubstitute.Tests.csproj", "{4AEFDD3A-1908-4A44-95B7-6A2F77D558BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework.Testing.NSubstitute.Tests", "src\EntityFramework.Testing.NSubstitute.Tests\EntityFramework.Testing.NSubstitute.Tests.csproj", "{4AEFDD3A-1908-4A44-95B7-6A2F77D558BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Testing.Ninject", "src\EntityFramework.Testing.Ninject\EntityFramework.Testing.Ninject.csproj", "{43657637-9F2C-4E1B-8FAD-CA461E6C8D65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework.Testing.Ninject", "src\EntityFramework.Testing.Ninject\EntityFramework.Testing.Ninject.csproj", "{43657637-9F2C-4E1B-8FAD-CA461E6C8D65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Testing.Ninject.Tests", "src\EntityFramework.Testing.Ninject.Tests\EntityFramework.Testing.Ninject.Tests.csproj", "{0EBB390E-C0DC-41D1-804C-0AB7B109B7F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework.Testing.Ninject.Tests", "src\EntityFramework.Testing.Ninject.Tests\EntityFramework.Testing.Ninject.Tests.csproj", "{0EBB390E-C0DC-41D1-804C-0AB7B109B7F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Testing.Moq.Ninject", "src\EntityFramework.Testing.Moq.Ninject\EntityFramework.Testing.Moq.Ninject.csproj", "{D35C8D21-E390-4354-BBEC-9B5A04E515F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework.Testing.Moq.Ninject", "src\EntityFramework.Testing.Moq.Ninject\EntityFramework.Testing.Moq.Ninject.csproj", "{D35C8D21-E390-4354-BBEC-9B5A04E515F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Testing.Moq.Ninject.Tests", "src\EntityFramework.Testing.Moq.Ninject.Tests\EntityFramework.Testing.Moq.Ninject.Tests.csproj", "{4E1063C2-D405-4582-A982-ABC4BE80C997}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework.Testing.Moq.Ninject.Tests", "src\EntityFramework.Testing.Moq.Ninject.Tests\EntityFramework.Testing.Moq.Ninject.Tests.csproj", "{4E1063C2-D405-4582-A982-ABC4BE80C997}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Testing.NSubstitute.Ninject", "src\EntityFramework.Testing.NSubstitute.Ninject\EntityFramework.Testing.NSubstitute.Ninject.csproj", "{C7207802-85E2-40F3-9C87-6B43B58CF73D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework.Testing.NSubstitute.Ninject", "src\EntityFramework.Testing.NSubstitute.Ninject\EntityFramework.Testing.NSubstitute.Ninject.csproj", "{C7207802-85E2-40F3-9C87-6B43B58CF73D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Testing.NSubstitute.Ninject.Tests", "src\EntityFramework.Testing.NSubstitute.Ninject.Tests\EntityFramework.Testing.NSubstitute.Ninject.Tests.csproj", "{E44F558E-012F-4D5F-9A25-E8187E533EBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework.Testing.NSubstitute.Ninject.Tests", "src\EntityFramework.Testing.NSubstitute.Ninject.Tests\EntityFramework.Testing.NSubstitute.Ninject.Tests.csproj", "{E44F558E-012F-4D5F-9A25-E8187E533EBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Testing.FakeItEasy", "src\EntityFramework.Testing.FakeItEasy\EntityFramework.Testing.FakeItEasy.csproj", "{B8102E5A-4288-4ADB-AC6F-8DCC259939F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework.Testing.FakeItEasy", "src\EntityFramework.Testing.FakeItEasy\EntityFramework.Testing.FakeItEasy.csproj", "{B8102E5A-4288-4ADB-AC6F-8DCC259939F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Testing.FakeItEasy.Tests", "src\EntityFramework.Testing.FakeItEasy.Tests\EntityFramework.Testing.FakeItEasy.Tests.csproj", "{E25FCAD1-A542-4339-9BC7-D443A16A274B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework.Testing.FakeItEasy.Tests", "src\EntityFramework.Testing.FakeItEasy.Tests\EntityFramework.Testing.FakeItEasy.Tests.csproj", "{E25FCAD1-A542-4339-9BC7-D443A16A274B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Testing.FakeItEasy.Ninject", "src\EntityFramework.Testing.FakeItEasy.Ninject\EntityFramework.Testing.FakeItEasy.Ninject.csproj", "{E8A92CFB-DD10-439B-90AB-B517CF6AFAED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework.Testing.FakeItEasy.Ninject", "src\EntityFramework.Testing.FakeItEasy.Ninject\EntityFramework.Testing.FakeItEasy.Ninject.csproj", "{E8A92CFB-DD10-439B-90AB-B517CF6AFAED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Testing.FakeItEasy.Ninject.Tests", "src\EntityFramework.Testing.FakeItEasy.Ninject.Tests\EntityFramework.Testing.FakeItEasy.Ninject.Tests.csproj", "{0EF93116-F543-43EF-A90B-B44EA680D805}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework.Testing.FakeItEasy.Ninject.Tests", "src\EntityFramework.Testing.FakeItEasy.Ninject.Tests\EntityFramework.Testing.FakeItEasy.Ninject.Tests.csproj", "{0EF93116-F543-43EF-A90B-B44EA680D805}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

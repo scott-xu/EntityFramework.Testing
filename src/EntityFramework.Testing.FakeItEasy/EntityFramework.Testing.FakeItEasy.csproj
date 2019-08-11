@@ -25,7 +25,7 @@
 
   <ItemGroup>
     <PackageReference Include="FakeItEasy" Version="4.0.0" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta004">
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
   </ItemGroup>

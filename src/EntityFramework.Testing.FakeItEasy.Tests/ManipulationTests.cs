@@ -59,6 +59,23 @@
         }
 
         [Fact]
+        public void Can_removeRange_referencingSelf_sets()
+        {
+            var blog = new Blog() { BlogId = 1, Url = "X" };
+            var blog2 = new Blog() { BlogId = 2 };
+            var blog3 = new Blog() { BlogId = 3 };
+            var data = new List<Blog> { blog, blog2, blog3 };
+
+            var set = this.GetFakeDbSet().SetupData(data);
+
+            set.RemoveRange(from b in set where b.Url == null select b);
+
+            var result = set.ToList();
+
+            Assert.Single(result);
+        }
+
+        [Fact]
         public void Can_return_entities_from_removeRange_sets()
         {
             var blog = new Blog();
@@ -133,6 +150,24 @@
             var result = set.ToList();
 
             Assert.Equal(3, result.Count);
+        }
+
+        [Fact]
+        public void Can_addRange_referencingSelf_sets()
+        {
+
+            var blog2 = new Blog() { BlogId = 2 };
+            var blog3 = new Blog() { BlogId = 3 };
+            var blog1 = new Blog() { BlogId = 1 };
+            var data = new List<Blog> { blog1, blog2, blog3 };
+
+            var set = this.GetFakeDbSet().SetupData(data);
+
+            set.AddRange(from s in set select new Blog { BlogId = s.BlogId * 4 });
+
+            var result = set.ToList();
+
+            Assert.Equal(6, result.Count);
         }
 
         [Fact]
