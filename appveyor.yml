@@ -1,15 +1,22 @@
-version: 1.2.{build}
-image: Visual Studio 2017
+version: 1.2.0
+image: Visual Studio 2019
 configuration: Release
 init:
-- cmd: git config --global core.autocrlf true
+- ps: >-
+    if ($env:APPVEYOR_REPO_TAG -eq "true")
+    {
+        Update-AppveyorBuild -Version "$env:APPVEYOR_REPO_TAG_NAME"
+    }
+    else
+    {
+        Update-AppveyorBuild -Version "$($env:APPVEYOR_BUILD_VERSION)-ci.$($env:APPVEYOR_BUILD_NUMBER)+sha.$($env:APPVEYOR_REPO_COMMIT.substring(0,7))"
+    }
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
   version: '{version}'
   package_version: '{version}'
-cache: 
-  - '%USERPROFILE%\.nuget\packages'
+cache: packages
 before_build:
 - cmd: nuget restore -Verbosity quiet
 build:
