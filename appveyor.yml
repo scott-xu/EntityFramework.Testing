@@ -1,3 +1,4 @@
+version: 1.2.0-ci.{build}
 image: Visual Studio 2019
 configuration: Release
 init:
@@ -8,14 +9,15 @@ init:
     }
     else
     {
-        Update-AppveyorBuild -Version "$($env:APPVEYOR_BUILD_VERSION)-ci.$($env:APPVEYOR_BUILD_NUMBER)+sha.$($env:APPVEYOR_REPO_COMMIT.substring(0,7))"
+        Update-AppveyorBuild -Version "$($env:APPVEYOR_BUILD_VERSION)+sha.$($env:APPVEYOR_REPO_COMMIT.substring(0,7))"
     }
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
   version: '{version}'
   package_version: '{version}'
-cache: packages
+cache: 
+  - '%USERPROFILE%\.nuget\packages'
 before_build:
 - cmd: nuget restore -Verbosity quiet
 build:
