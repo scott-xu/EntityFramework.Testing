@@ -44,14 +44,29 @@ namespace EntityFramework.Testing
         private readonly Action<string, IEnumerable> include;
 
         /// <summary>
+        /// The expression visitors.
+        /// </summary>
+        private readonly IEnumerable<ExpressionVisitor> expressionVisitors
+            = new[] { new DefaultIfEmptyRewriter() };
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="InMemoryAsyncQueryProvider"/> class.
         /// </summary>
         /// <param name="provider">The query provider.</param>
         /// <param name="include">The Include action.</param>
-        public InMemoryAsyncQueryProvider(IQueryProvider provider, Action<string, IEnumerable> include = null)
+        /// <param name="expressionVisitors">The expression visitors.</param>
+        public InMemoryAsyncQueryProvider(
+            IQueryProvider provider,
+            Action<string, IEnumerable> include = null,
+            IEnumerable<ExpressionVisitor> expressionVisitors = null)
         {
             this.provider = provider;
             this.include = include;
+
+            if (expressionVisitors != null)
+            {
+                this.expressionVisitors = this.expressionVisitors.Concat(expressionVisitors);
+            }
         }
 
         /// <summary>
@@ -74,6 +89,11 @@ namespace EntityFramework.Testing
         /// <returns>The generic query-able object.</returns>
         public IQueryable<TElement> CreateQuery<TElement>(Expression expression)
         {
+            foreach (var visitor in this.expressionVisitors)
+            {
+                expression = visitor.Visit(expression);
+            }
+
             return new InMemoryAsyncQueryable<TElement>(this.provider.CreateQuery<TElement>(expression), this.include);
         }
 
@@ -84,6 +104,11 @@ namespace EntityFramework.Testing
         /// <returns>The result.</returns>
         public object Execute(Expression expression)
         {
+            foreach (var visitor in this.expressionVisitors)
+            {
+                expression = visitor.Visit(expression);
+            }
+
             return ExecuteMethod.MakeGenericMethod(expression.Type).Invoke(this, new object[] { expression });
         }
 

@@ -30,14 +30,27 @@ namespace EntityFramework.Testing
         private readonly Action<string, IEnumerable> include;
 
         /// <summary>
+        /// The expression visitors.
+        /// </summary>
+        private readonly IEnumerable<ExpressionVisitor> expressionVisitors; // = new[] { new DefaultIfEmptyRewriter() };
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="InMemoryAsyncQueryable{T}"/> class.
         /// </summary>
         /// <param name="queryable">The query-able object.</param>
         /// <param name="include">The Include action.</param>
-        public InMemoryAsyncQueryable(IQueryable<T> queryable, Action<string, IEnumerable> include = null)
+        /// <param name="expressionVisitors">The expression visitors.</param>
+        public InMemoryAsyncQueryable(
+            IQueryable<T> queryable,
+            Action<string, IEnumerable> include = null,
+            IEnumerable<ExpressionVisitor> expressionVisitors = null)
         {
             this.queryable = queryable;
             this.include = include;
+            if (expressionVisitors != null)
+            {
+                this.expressionVisitors = this.expressionVisitors.Concat(expressionVisitors);
+            }
         }
 
         /// <summary>
@@ -62,7 +75,7 @@ namespace EntityFramework.Testing
         /// </summary>
         public IQueryProvider Provider
         {
-            get { return new InMemoryAsyncQueryProvider(this.queryable.Provider, this.include); }
+            get { return new InMemoryAsyncQueryProvider(this.queryable.Provider, this.include, this.expressionVisitors); }
         }
 
         /// <summary>

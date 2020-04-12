@@ -42,6 +42,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework.Testing.Fak
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework.Testing.FakeItEasy.Ninject.Tests", "src\EntityFramework.Testing.FakeItEasy.Ninject.Tests\EntityFramework.Testing.FakeItEasy.Ninject.Tests.csproj", "{0EF93116-F543-43EF-A90B-B44EA680D805}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework.Testing.Tests", "src\EntityFramework.Testing.Tests\EntityFramework.Testing.Tests.csproj", "{E76C5345-15B9-45FF-8550-88475718F4D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -108,6 +110,10 @@ Global
 		{0EF93116-F543-43EF-A90B-B44EA680D805}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EF93116-F543-43EF-A90B-B44EA680D805}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EF93116-F543-43EF-A90B-B44EA680D805}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E76C5345-15B9-45FF-8550-88475718F4D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E76C5345-15B9-45FF-8550-88475718F4D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E76C5345-15B9-45FF-8550-88475718F4D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E76C5345-15B9-45FF-8550-88475718F4D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
